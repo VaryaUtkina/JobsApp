@@ -6,6 +6,21 @@
 //
 
 import Foundation
+import Alamofire
+
+enum Link {
+    case jobsUrl
+    case postRequest
+    
+    var url: URL {
+        switch self {
+        case .jobsUrl:
+            URL(string: "https://jobicy.com/api/v2/remote-jobs?count=20&geo=usa&industry=marketing&tag=seo")!
+        case .postRequest:
+            URL(string: "")!
+        }
+    }
+}
 
 final class NetworkManager {
     
@@ -13,13 +28,30 @@ final class NetworkManager {
     
     private init() {}
     
-    private func fetchJobs() {
-        URLSession.shared.dataTask(with: URL(string: "https://jobicy.com/api/v2/remote-jobs?count=20&geo=usa&industry=marketing&tag=seo")!) { data, response, error in
-            guard let response else {
-                print("No response")
-                return
+    func fetchJobs(from url: URL, completion: @escaping(Result<JobList, AFError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseDecodable(of: JobList.self) { dataResponse in
+                switch dataResponse.result {
+                case .success(let jobList):
+                    completion(.success(jobList))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
-            print(response)
-        }.resume()
+    }
+    
+    func fetchData(from url: URL, completion: @escaping(Result<Data, AFError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseData { responseData in
+                switch responseData.result {
+                case .success(let data):
+                    completion(.success(data))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+                
+            }
     }
 }

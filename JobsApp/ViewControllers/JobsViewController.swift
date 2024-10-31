@@ -9,25 +9,42 @@ import UIKit
 
 final class JobsViewController: UICollectionViewController {
 
+    private let networkManager = NetworkManager.shared
+    private var jobs: [Job] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchJobs()
     }
     
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        jobs.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "jobCell", for: indexPath)
         guard let cell = cell as? JobCell else { return UICollectionViewCell() }
-        cell.jobTitleLabel.font = UIFont(name: "DejaVuSans-Bold", size: 18)
-        cell.jobTitleLabel.text = "Some job"
+        let job = jobs[indexPath.item]
+        cell.configure(with: job)
         return cell
     }
 
     // MARK: UICollectionViewDelegate
 
+    
+    private func fetchJobs() {
+        networkManager.fetchJobs(from: Link.jobsUrl.url) { [unowned self] result in
+            switch result {
+            case .success(let jobList):
+                jobs = jobList.jobs
+                collectionView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
 
 extension JobsViewController: UICollectionViewDelegateFlowLayout {
