@@ -22,7 +22,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Get jobs" cornerStyle="capsule"/>
                                 <connections>
-                                    <segue destination="m6b-sG-W7U" kind="presentation" modalPresentationStyle="fullScreen" id="0sW-T5-Gul"/>
+                                    <segue destination="m6b-sG-W7U" kind="presentation" modalPresentationStyle="fullScreen" id="rwh-m5-vn0"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fE3-6I-A4Y">
@@ -50,69 +50,75 @@
         <!--Jobs-->
         <scene sceneID="jta-s2-Sub">
             <objects>
-                <collectionViewController id="WOL-qF-wem" sceneMemberID="viewController">
+                <collectionViewController id="WOL-qF-wem" customClass="JobsViewController" customModule="JobsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="zej-Jc-6py">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="f2S-Iv-CLh">
-                            <size key="itemSize" width="320" height="220"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="40" minimumInteritemSpacing="40" id="f2S-Iv-CLh">
+                            <size key="itemSize" width="320" height="180"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="40" maxX="0.0" maxY="40"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="jobCell" id="uEE-aX-Vcb">
-                                <rect key="frame" x="27.5" y="0.0" width="320" height="220"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="jobCell" id="uEE-aX-Vcb" customClass="JobCell" customModule="JobsApp" customModuleProvider="target">
+                                <rect key="frame" x="27.5" y="40" width="320" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="t6l-il-OyG">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="annualSalary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Rf-Ga-V3S">
-                                            <rect key="frame" x="2" y="27" width="97.5" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jobExcerpt" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zb6-Lo-2kf">
-                                            <rect key="frame" x="2" y="113.5" width="81.5" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jobGeo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hP-gt-y6A">
-                                            <rect key="frame" x="2" y="55.5" width="55" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="companyName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-8H-zSt">
-                                            <rect key="frame" x="2" y="81" width="115" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jobTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUT-OJ-jPW">
-                                            <rect key="frame" x="2" y="2" width="55.5" height="20"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="P1I-RL-ia6">
+                                            <rect key="frame" x="8" y="12" width="115" height="130"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jobTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUT-OJ-jPW">
+                                                    <rect key="frame" x="0.0" y="0.0" width="55.5" height="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="annualSalary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Rf-Ga-V3S">
+                                                    <rect key="frame" x="0.0" y="27" width="97.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jobGeo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hP-gt-y6A">
+                                                    <rect key="frame" x="0.0" y="54.5" width="55" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="companyName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-8H-zSt">
+                                                    <rect key="frame" x="0.0" y="82" width="115" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jobExcerpt" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zb6-Lo-2kf">
+                                                    <rect key="frame" x="0.0" y="109.5" width="81.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="9Rf-Ga-V3S" firstAttribute="leading" secondItem="t6l-il-OyG" secondAttribute="leading" constant="2" id="2MX-tq-FUS"/>
-                                        <constraint firstItem="EUT-OJ-jPW" firstAttribute="leading" secondItem="t6l-il-OyG" secondAttribute="leading" constant="2" id="3IN-39-foc"/>
-                                        <constraint firstItem="Zb6-Lo-2kf" firstAttribute="leading" secondItem="t6l-il-OyG" secondAttribute="leading" constant="2" id="5HT-mr-QLf"/>
-                                        <constraint firstItem="9Rf-Ga-V3S" firstAttribute="top" secondItem="EUT-OJ-jPW" secondAttribute="bottom" constant="5" id="IBh-e2-geU"/>
-                                        <constraint firstItem="4hP-gt-y6A" firstAttribute="leading" secondItem="t6l-il-OyG" secondAttribute="leading" constant="2" id="QJT-zk-LkF"/>
-                                        <constraint firstItem="EUT-OJ-jPW" firstAttribute="top" secondItem="t6l-il-OyG" secondAttribute="top" constant="2" id="YJQ-Ts-7Ii"/>
-                                        <constraint firstItem="FcM-8H-zSt" firstAttribute="top" secondItem="4hP-gt-y6A" secondAttribute="bottom" constant="5" id="e9N-CF-XhF"/>
-                                        <constraint firstItem="Zb6-Lo-2kf" firstAttribute="top" secondItem="FcM-8H-zSt" secondAttribute="bottom" constant="12" id="lAd-cr-5q7"/>
-                                        <constraint firstItem="FcM-8H-zSt" firstAttribute="leading" secondItem="t6l-il-OyG" secondAttribute="leading" constant="2" id="rBQ-1p-u5R"/>
-                                        <constraint firstItem="4hP-gt-y6A" firstAttribute="top" secondItem="9Rf-Ga-V3S" secondAttribute="bottom" constant="8" id="ynP-m6-SWj"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="P1I-RL-ia6" secondAttribute="trailing" constant="8" id="26y-45-zwN"/>
+                                        <constraint firstItem="P1I-RL-ia6" firstAttribute="top" secondItem="t6l-il-OyG" secondAttribute="top" constant="12" id="RNw-JS-NqZ"/>
+                                        <constraint firstAttribute="leading" secondItem="P1I-RL-ia6" secondAttribute="leading" constant="-8" id="zNO-VR-XDs"/>
                                     </constraints>
                                 </collectionViewCellContentView>
+                                <color key="backgroundColor" red="0.97062936256516652" green="0.97062936256516652" blue="0.97062936256516652" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <outlet property="annualSalaryLabel" destination="9Rf-Ga-V3S" id="cPP-PG-YIg"/>
+                                    <outlet property="companyName" destination="FcM-8H-zSt" id="PWo-ij-nQl"/>
+                                    <outlet property="jobExpertLabel" destination="Zb6-Lo-2kf" id="afY-Yv-aVl"/>
+                                    <outlet property="jobGeoLabel" destination="4hP-gt-y6A" id="l9u-bN-ana"/>
+                                    <outlet property="jobTitleLabel" destination="EUT-OJ-jPW" id="LS6-p6-ye4"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -124,7 +130,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dlf-mV-4kx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1572" y="0.44977511244377816"/>
+            <point key="canvasLocation" x="1602" y="3"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QvD-gq-ZzT">
@@ -142,7 +148,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HyI-xZ-oYW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="798" y="2"/>
+            <point key="canvasLocation" x="830" y="4"/>
         </scene>
     </scenes>
     <resources>
