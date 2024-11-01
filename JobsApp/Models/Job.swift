@@ -26,9 +26,19 @@ struct Job: Decodable {
     let salaryCurrency: String?
     
     var salaryRange: String {
-        if let annualSalaryMin, let annualSalaryMax, let salaryCurrency {
-            return "\(annualSalaryMin) - \(annualSalaryMax)"
+        if let annualSalaryMin, let annualSalaryMax {
+            return "\(formatNumberString(annualSalaryMin)) - \(formatNumberString(annualSalaryMax))"
         }
         return "not specified"
+    }
+    
+    private func formatNumberString(_ numberString: String) -> String {
+        guard let salary = Int(numberString) else {
+            return numberString
+        }
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.locale = Locale(identifier: "en_US")
+        return numberFormatter.string(from: NSNumber(value: salary)) ?? numberString
     }
 }
