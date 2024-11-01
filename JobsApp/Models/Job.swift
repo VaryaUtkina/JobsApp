@@ -29,6 +29,6 @@ struct Job: Decodable {
         if let annualSalaryMin, let annualSalaryMax, let salaryCurrency {
             return "\(annualSalaryMin) - \(annualSalaryMax) \(salaryCurrency)"
         }
-        return " "
+        return "not specified"
     }
 }

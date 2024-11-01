@@ -9,8 +9,10 @@ import UIKit
 
 final class JobCell: UICollectionViewCell {
     
+    @IBOutlet var companyImage: UIImageView!
     @IBOutlet var jobTitleLabel: UILabel!
     @IBOutlet var annualSalaryLabel: UILabel!
+    @IBOutlet var rangeSalaryLabel: UILabel!
     @IBOutlet var jobGeoLabel: UILabel!
     @IBOutlet var companyName: UILabel!
     @IBOutlet var jobExpertLabel: UILabel!
@@ -21,12 +23,6 @@ final class JobCell: UICollectionViewCell {
         super.awakeFromNib()
         
         setupUI()
-        fetchData()
-    }
-    
-    // TODO: fetch DataImage
-    private func fetchData() {
-        
     }
     
     private func setupUI() {
@@ -47,6 +43,20 @@ final class JobCell: UICollectionViewCell {
         jobGeoLabel.text = job.jobGeo
         companyName.text = job.companyName
         jobExpertLabel.text = job.jobExcerpt
-        annualSalaryLabel.text = job.salaryRange
+        rangeSalaryLabel.text = job.salaryRange
+        
+        if let currency = job.salaryCurrency {
+            annualSalaryLabel.text = "Annual salary, \(currency):"
+        }
+        
+        networkManager.fetchData(from: job.companyLogo) { [unowned self] result in
+            switch result {
+            case .success(let imageData):
+                companyImage.image = UIImage(data: imageData)
+                companyImage.layer.cornerRadius = 8
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

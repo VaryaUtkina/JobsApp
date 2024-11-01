@@ -121,11 +121,13 @@
                                 </collectionViewCellContentView>
                                 <color key="backgroundColor" red="0.97062936256516652" green="0.97062936256516652" blue="0.97062936256516652" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
-                                    <outlet property="annualSalaryLabel" destination="9Rf-Ga-V3S" id="cPP-PG-YIg"/>
+                                    <outlet property="annualSalaryLabel" destination="jgR-aV-BbQ" id="VqC-Bv-QJr"/>
+                                    <outlet property="companyImage" destination="Pj3-Ut-t12" id="fbO-ob-bPp"/>
                                     <outlet property="companyName" destination="FcM-8H-zSt" id="PWo-ij-nQl"/>
                                     <outlet property="jobExpertLabel" destination="Zb6-Lo-2kf" id="afY-Yv-aVl"/>
                                     <outlet property="jobGeoLabel" destination="4hP-gt-y6A" id="l9u-bN-ana"/>
                                     <outlet property="jobTitleLabel" destination="EUT-OJ-jPW" id="LS6-p6-ye4"/>
+                                    <outlet property="rangeSalaryLabel" destination="9Rf-Ga-V3S" id="cPP-PG-YIg"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
