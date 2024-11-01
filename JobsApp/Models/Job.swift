@@ -24,4 +24,11 @@ struct Job: Decodable {
     let annualSalaryMin: String?
     let annualSalaryMax: String?
     let salaryCurrency: String?
+    
+    var salaryRange: String {
+        if let annualSalaryMin, let annualSalaryMax, let salaryCurrency {
+            return "\(annualSalaryMin) - \(annualSalaryMax) \(salaryCurrency)"
+        }
+        return " "
+    }
 }

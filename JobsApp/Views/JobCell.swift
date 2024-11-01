@@ -47,6 +47,6 @@ final class JobCell: UICollectionViewCell {
         jobGeoLabel.text = job.jobGeo
         companyName.text = job.companyName
         jobExpertLabel.text = job.jobExcerpt
-//        annualSalaryLabel.text = job.salary
+        annualSalaryLabel.text = job.salaryRange
     }
 }
