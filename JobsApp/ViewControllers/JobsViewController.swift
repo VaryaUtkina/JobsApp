@@ -14,7 +14,9 @@ final class JobsViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         overrideUserInterfaceStyle = .light
+        navigationController?.overrideUserInterfaceStyle = .light
         fetchJobs()
     }
     
@@ -35,9 +37,11 @@ final class JobsViewController: UICollectionViewController {
 
     @IBAction func moonButtonAction(_ sender: UIBarButtonItem) {
         if overrideUserInterfaceStyle == .light {
+            navigationController?.overrideUserInterfaceStyle = .dark
             overrideUserInterfaceStyle = .dark
             navigationItem.rightBarButtonItem?.image = UIImage(systemName: "moon.fill")
         } else {
+            navigationController?.overrideUserInterfaceStyle = .light
             overrideUserInterfaceStyle = .light
             navigationItem.rightBarButtonItem?.image = UIImage(systemName: "moon")
         }
