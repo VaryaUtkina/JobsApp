@@ -7,16 +7,30 @@
 
 import UIKit
 
+enum Theme: Codable {
+    case light
+    case dark
+    
+    var style: UIUserInterfaceStyle {
+        switch self {
+        case .light: .light
+        case .dark: .dark
+        }
+    }
+}
+
 final class JobsViewController: UICollectionViewController {
 
     private let networkManager = NetworkManager.shared
+    private let storageManager = StorageManager.shared
     private var jobs: [Job] = []
+    private var theme = Theme.light
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        overrideUserInterfaceStyle = .light
-        navigationController?.overrideUserInterfaceStyle = .light
+        theme = storageManager.fetchTheme()
+        updateTheme(theme)
         fetchJobs()
     }
     
@@ -36,15 +50,13 @@ final class JobsViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
 
     @IBAction func moonButtonAction(_ sender: UIBarButtonItem) {
-        if overrideUserInterfaceStyle == .light {
-            navigationController?.overrideUserInterfaceStyle = .dark
-            overrideUserInterfaceStyle = .dark
-            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "moon.fill")
+        if theme == .light {
+            theme = .dark
         } else {
-            navigationController?.overrideUserInterfaceStyle = .light
-            overrideUserInterfaceStyle = .light
-            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "moon")
+            theme = .light
         }
+        updateTheme(theme)
+        storageManager.save(theme: theme)
     }
     
     private func fetchJobs() {
@@ -57,6 +69,14 @@ final class JobsViewController: UICollectionViewController {
                 print(error)
             }
         }
+    }
+    
+    private func updateTheme(_ theme: Theme) {
+        overrideUserInterfaceStyle = theme.style
+        navigationController?.overrideUserInterfaceStyle = theme.style
+        navigationItem.rightBarButtonItem?.image = theme == .light
+        ? UIImage(systemName: "moon")
+        : UIImage(systemName: "moon.fill")
     }
 }
 
