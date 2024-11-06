@@ -39,27 +39,6 @@ final class JobCell: UICollectionViewCell {
             annualSalaryLabel.text = "Annual salary, \(currency):"
         }
         
-        customize(
-            font: UIFont(name: DejaVuSans.bold.rawValue, size: 19)
-            ?? UIFont.systemFont(ofSize: 19),
-            forLabels: jobTitleLabel
-        )
-        customize(
-            font: UIFont(name: DejaVuSans.bold.rawValue, size: 15)
-            ?? UIFont.systemFont(ofSize: 19),
-            forLabels: companyName, rangeSalaryLabel, jobGeoLabel
-        )
-        customize(
-            font: UIFont(name: DejaVuSans.origin.rawValue, size: 15)
-            ?? UIFont.systemFont(ofSize: 15),
-            forLabels: annualSalaryLabel, remoteLabel
-        )
-        customize(
-            font: UIFont(name: DejaVuSans.origin.rawValue, size: 14)
-            ?? UIFont.systemFont(ofSize: 13),
-            forLabels: jobExpertLabel
-        )
-        
         networkManager.fetchData(from: job.companyLogo) { [unowned self] result in
             switch result {
             case .success(let imageData):
@@ -68,12 +47,6 @@ final class JobCell: UICollectionViewCell {
             case .failure(let error):
                 print(error)
             }
-        }
-    }
-    
-    private func customize(font: UIFont, forLabels labels: UILabel...) {
-        labels.forEach { label in
-            label.font = font
         }
     }
     
