@@ -27,15 +27,36 @@ final class JobDetailsViewController: UIViewController {
     var job: Job!
     
     // TODO: - put moon button
-    var theme: Theme!
+    var theme: Theme! {
+        didSet {
+            updateTheme(theme)
+        }
+    }
+    weak var delegate: JobDetailsViewControllerDelegate?
     
     // MARK: - Private Properties
     private let networkManager = NetworkManager.shared
+    private let storageManager = StorageManager.shared
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        updateTheme(theme)
+    }
+    @IBAction func moonButtonAction(_ sender: UIBarButtonItem) {
+        theme = (theme == .light) ? .dark : .light
+
+        storageManager.save(theme: theme)
+        delegate?.reloadTheme(theme)
+    }
+    
+    private func updateTheme(_ theme: Theme) {
+        overrideUserInterfaceStyle = theme.style
+        navigationController?.overrideUserInterfaceStyle = theme.style
+        navigationItem.rightBarButtonItem?.image = theme == .light
+        ? UIImage(systemName: "moon")
+        : UIImage(systemName: "moon.fill")
     }
 }
 

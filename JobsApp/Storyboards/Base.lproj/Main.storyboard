@@ -330,7 +330,14 @@
                             <constraint firstItem="Lhh-iG-e2h" firstAttribute="leading" secondItem="iPP-mZ-GNN" secondAttribute="leading" id="wJ6-oQ-kji"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="sF9-3G-yHt"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="sF9-3G-yHt">
+                        <barButtonItem key="rightBarButtonItem" image="moon" catalog="system" id="ARK-C9-9mR">
+                            <color key="tintColor" name="LabelGreyColor"/>
+                            <connections>
+                                <action selector="moonButtonAction:" destination="8Ju-EO-G5D" id="bhT-bD-HSD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="companyImage" destination="qI2-fF-gli" id="QvQ-vM-bjW"/>
                         <outlet property="companyLabel" destination="soW-8W-ELq" id="jVq-a5-xUe"/>

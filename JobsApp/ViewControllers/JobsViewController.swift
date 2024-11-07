@@ -19,6 +19,10 @@ enum Theme: Codable {
     }
 }
 
+protocol JobDetailsViewControllerDelegate: AnyObject {
+    func reloadTheme(_ theme: Theme)
+}
+
 final class JobsViewController: UICollectionViewController {
 
     private let networkManager = NetworkManager.shared
@@ -39,6 +43,7 @@ final class JobsViewController: UICollectionViewController {
             guard let jobDetailsVC = segue.destination as? JobDetailsViewController else { return }
             jobDetailsVC.theme = theme
             jobDetailsVC.job = jobs[indexPath.row]
+            jobDetailsVC.delegate = self
         }
     }
     
@@ -56,11 +61,8 @@ final class JobsViewController: UICollectionViewController {
     }
 
     @IBAction func moonButtonAction(_ sender: UIBarButtonItem) {
-        if theme == .light {
-            theme = .dark
-        } else {
-            theme = .light
-        }
+        theme = (theme == .light) ? .dark : .light
+        
         updateTheme(theme)
         storageManager.save(theme: theme)
     }
@@ -77,7 +79,7 @@ final class JobsViewController: UICollectionViewController {
         }
     }
     
-    private func updateTheme(_ theme: Theme) {
+    internal func updateTheme(_ theme: Theme) {
         overrideUserInterfaceStyle = theme.style
         navigationController?.overrideUserInterfaceStyle = theme.style
         navigationItem.rightBarButtonItem?.image = theme == .light
@@ -94,5 +96,12 @@ extension JobsViewController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         CGSize(width: collectionView.bounds.width - 32, height: 180)
+    }
+}
+
+extension JobsViewController: JobDetailsViewControllerDelegate {
+    func reloadTheme(_ theme: Theme) {
+        self.theme = theme
+        updateTheme(theme)
     }
 }
