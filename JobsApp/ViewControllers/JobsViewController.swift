@@ -34,6 +34,14 @@ final class JobsViewController: UICollectionViewController {
         fetchJobs()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = collectionView.indexPathsForSelectedItems?.first {
+            guard let jobDetailsVC = segue.destination as? JobDetailsViewController else { return }
+            jobDetailsVC.theme = theme
+            jobDetailsVC.job = jobs[indexPath.row]
+        }
+    }
+    
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         jobs.count

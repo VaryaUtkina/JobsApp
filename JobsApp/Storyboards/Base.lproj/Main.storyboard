@@ -163,10 +163,10 @@
             </objects>
             <point key="canvasLocation" x="1600.8" y="2.2488755622188905"/>
         </scene>
-        <!--Job Details Controller-->
+        <!--Job Details View Controller-->
         <scene sceneID="bCH-a2-uD4">
             <objects>
-                <viewController id="8Ju-EO-G5D" customClass="JobDetailsController" customModule="JobsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8Ju-EO-G5D" customClass="JobDetailsViewController" customModule="JobsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nn0-jN-2th">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -331,6 +331,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="sF9-3G-yHt"/>
+                    <connections>
+                        <outlet property="companyImage" destination="qI2-fF-gli" id="QvQ-vM-bjW"/>
+                        <outlet property="companyLabel" destination="soW-8W-ELq" id="jVq-a5-xUe"/>
+                        <outlet property="companyView" destination="gWs-i0-mZL" id="lf4-Wx-BMh"/>
+                        <outlet property="jobDescription" destination="oGF-Rg-bvP" id="gZd-Bb-dgD"/>
+                        <outlet property="jobFunctionLabel" destination="rCD-ta-TW8" id="7td-47-IBi"/>
+                        <outlet property="jobGeoLabel" destination="Xpb-A6-Cag" id="cha-GI-e2F"/>
+                        <outlet property="jobTypeLabel" destination="plz-w4-Etj" id="I0O-Ng-8G3"/>
+                        <outlet property="positionLabel" destination="sWv-Q1-6OG" id="vBH-t6-sU6"/>
+                        <outlet property="salaryLabel" destination="wZc-Em-991" id="FnB-oQ-aRj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nD9-ng-D8C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,10 +7,33 @@
 
 import UIKit
 
-final class JobDetailsController: UIViewController {
+final class JobDetailsViewController: UIViewController {
     
+    // MARK: - IB Outlets
+    @IBOutlet var companyImage: UIImageView!
+    @IBOutlet var companyView: UIView!
+    @IBOutlet var companyLabel: UILabel!
+    
+    @IBOutlet var positionLabel: UILabel!
+    @IBOutlet var salaryLabel: UILabel!
+    
+    @IBOutlet var jobGeoLabel: UILabel!
+    @IBOutlet var jobFunctionLabel: UILabel!
+    @IBOutlet var jobTypeLabel: UILabel!
+    
+    @IBOutlet var jobDescription: UILabel!
+    
+    // MARK: - Public Properties
+    var job: Job!
+    var theme: Theme!
+    
+    // MARK: - Private Properties
+    private let networkManager = NetworkManager.shared
+    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
     }
 
     
@@ -35,5 +58,19 @@ final class JobDetailsController: UIViewController {
 //            }
 //        }
 //    }
+    
+    private func setupUI() {
+        networkManager.fetchData(from: job.companyLogo) { [unowned self] result in
+            switch result {
+            case .success(let imageData):
+                companyImage.image = UIImage(data: imageData)
+                companyImage.layer.cornerRadius = 20
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        companyLabel.text = job.companyName
+    }
 }
 
