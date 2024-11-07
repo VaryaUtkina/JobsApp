@@ -44,7 +44,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="XWF-NQ-D85">
                                             <rect key="frame" x="8" y="12" width="293" height="136"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jobTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUT-OJ-jPW">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jobTitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUT-OJ-jPW">
                                                     <rect key="frame" x="0.0" y="0.0" width="81.5" height="22.5"/>
                                                     <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="19"/>
                                                     <color key="textColor" name="MainLabelColor"/>
@@ -175,7 +175,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1C-ln-W5g">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="2430"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWs-i0-mZL">
                                                 <rect key="frame" x="16" y="8" width="343" height="120"/>
@@ -216,12 +216,12 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="PLb-CH-rIM">
-                                                <rect key="frame" x="16" y="148" width="343" height="180"/>
+                                                <rect key="frame" x="16" y="148" width="343" height="177.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Y1y-T5-WVd">
                                                         <rect key="frame" x="0.0" y="0.0" width="67.5" height="59"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWv-Q1-6OG">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWv-Q1-6OG">
                                                                 <rect key="frame" x="0.0" y="0.0" width="67.5" height="26"/>
                                                                 <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="22"/>
                                                                 <color key="textColor" name="MainLabelColor"/>
@@ -290,8 +290,8 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGF-Rg-bvP">
-                                                        <rect key="frame" x="0.0" y="159.5" width="87.5" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="0.0" y="159.5" width="78.5" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -303,7 +303,6 @@
                                             <constraint firstItem="PLb-CH-rIM" firstAttribute="leading" secondItem="q1C-ln-W5g" secondAttribute="leading" constant="16" id="9v1-3W-56h"/>
                                             <constraint firstItem="PLb-CH-rIM" firstAttribute="top" secondItem="gWs-i0-mZL" secondAttribute="bottom" constant="20" id="S5Q-T5-p52"/>
                                             <constraint firstAttribute="trailing" secondItem="gWs-i0-mZL" secondAttribute="trailing" constant="16" id="ZXF-HP-LaK"/>
-                                            <constraint firstAttribute="height" constant="2430" id="dVW-Ik-ETi"/>
                                             <constraint firstItem="gWs-i0-mZL" firstAttribute="leading" secondItem="q1C-ln-W5g" secondAttribute="leading" constant="16" id="jGN-3Q-H8W"/>
                                             <constraint firstAttribute="trailing" secondItem="PLb-CH-rIM" secondAttribute="trailing" constant="16" id="zGS-LM-gc8"/>
                                             <constraint firstItem="gWs-i0-mZL" firstAttribute="top" secondItem="q1C-ln-W5g" secondAttribute="top" constant="8" id="zbd-w3-DYa"/>
@@ -316,6 +315,7 @@
                                     <constraint firstItem="q1C-ln-W5g" firstAttribute="leading" secondItem="Lhh-iG-e2h" secondAttribute="leading" id="OEW-Nd-ULO"/>
                                     <constraint firstItem="q1C-ln-W5g" firstAttribute="width" secondItem="Lhh-iG-e2h" secondAttribute="width" id="UAq-vj-TwU"/>
                                     <constraint firstAttribute="trailing" secondItem="q1C-ln-W5g" secondAttribute="trailing" id="jhd-7l-Pg5"/>
+                                    <constraint firstItem="q1C-ln-W5g" firstAttribute="height" secondItem="Lhh-iG-e2h" secondAttribute="height" id="s1v-Ip-2c0"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="CRN-rh-wnd"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="FV1-5Z-fP6"/>

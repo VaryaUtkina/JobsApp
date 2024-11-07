@@ -55,8 +55,6 @@ final class JobsViewController: UICollectionViewController {
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
-
     @IBAction func moonButtonAction(_ sender: UIBarButtonItem) {
         if theme == .light {
             theme = .dark
@@ -88,6 +86,7 @@ final class JobsViewController: UICollectionViewController {
     }
 }
 
+// TODO: - setup variable height
 extension JobsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,

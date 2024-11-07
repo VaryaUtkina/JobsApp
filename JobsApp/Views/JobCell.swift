@@ -32,9 +32,8 @@ final class JobCell: UICollectionViewCell {
         companyName.text = job.companyName
         jobExpertLabel.text = job.jobExcerpt
         rangeSalaryLabel.text = job.salaryRange
+        jobGeoLabel.text = job.emojiGeo
         
-        
-        jobGeoLabel.text = "\(flagEmoji(forCountryCode: job.jobGeo)) \(job.jobGeo)"
         if let currency = job.salaryCurrency {
             annualSalaryLabel.text = "Annual salary, \(currency):"
         }
@@ -61,20 +60,5 @@ final class JobCell: UICollectionViewCell {
         layer.shadowOpacity = 0.6
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 5)
-    }
-    
-    private func flagEmoji(forCountryCode countryCode: String) -> Character {
-        if countryCode == "Anywhere" {
-            return "🌐"
-        }
-        
-        var flagString = ""
-        for scalar in countryCode.unicodeScalars {
-            guard let regionScalar = UnicodeScalar(127397 + scalar.value) else {
-                return " "
-            }
-            flagString.unicodeScalars.append(regionScalar)
-        }
-        return flagString.first ?? " "
     }
 }
