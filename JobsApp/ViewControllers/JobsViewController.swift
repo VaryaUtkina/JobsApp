@@ -36,6 +36,8 @@ final class JobsViewController: UICollectionViewController {
         theme = storageManager.fetchTheme()
         updateTheme(theme)
         fetchJobs()
+        
+        navigationController?.navigationBar.tintColor = .mainLabel
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -109,7 +111,6 @@ extension JobsViewController: UICollectionViewDelegateFlowLayout {
 
         let numberOfLines = Int(textHeight/lineHeight)
         let height: CGFloat = numberOfLines <= 1 ? 180 : 200
-        print(job.jobTitle, "textHeight: ", textHeight, "number of lines: ", numberOfLines)
         
         return CGSize(width: width, height: height)
     }
