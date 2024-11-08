@@ -171,163 +171,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lhh-iG-e2h">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xC9-yD-oMo">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1C-ln-W5g">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FcD-MJ-iTr">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWs-i0-mZL">
-                                                <rect key="frame" x="16" y="8" width="343" height="120"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qI2-fF-gli">
-                                                        <rect key="frame" x="4" y="10" width="100" height="100"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="qI2-fF-gli" secondAttribute="height" multiplier="1:1" id="GnS-t9-Zdi"/>
-                                                            <constraint firstAttribute="width" constant="100" id="qe9-1D-Hzq"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EME-ns-hAK">
-                                                        <rect key="frame" x="112" y="36" width="227" height="48"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soW-8W-ELq">
-                                                                <rect key="frame" x="0.0" y="0.0" width="227" height="20"/>
-                                                                <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="17"/>
-                                                                <color key="textColor" name="MainLabelColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is hiring a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVS-s3-exI">
-                                                                <rect key="frame" x="0.0" y="28" width="227" height="20"/>
-                                                                <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="17"/>
-                                                                <color key="textColor" name="MainLabelColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" name="LabelBlueColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="EME-ns-hAK" firstAttribute="leading" secondItem="qI2-fF-gli" secondAttribute="trailing" constant="8" id="HbX-tV-4my"/>
-                                                    <constraint firstItem="qI2-fF-gli" firstAttribute="centerY" secondItem="gWs-i0-mZL" secondAttribute="centerY" id="Ssi-Pd-Bkf"/>
-                                                    <constraint firstItem="EME-ns-hAK" firstAttribute="centerY" secondItem="gWs-i0-mZL" secondAttribute="centerY" id="dsW-3A-Amh"/>
-                                                    <constraint firstAttribute="height" constant="120" id="h5K-N5-itQ"/>
-                                                    <constraint firstItem="qI2-fF-gli" firstAttribute="leading" secondItem="gWs-i0-mZL" secondAttribute="leading" constant="4" id="leZ-cr-Mh7"/>
-                                                    <constraint firstAttribute="trailing" secondItem="EME-ns-hAK" secondAttribute="trailing" constant="4" id="xS5-yK-AYJ"/>
-                                                </constraints>
-                                            </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="PLb-CH-rIM">
-                                                <rect key="frame" x="16" y="148" width="343" height="177.5"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Y1y-T5-WVd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="67.5" height="59"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWv-Q1-6OG">
-                                                                <rect key="frame" x="0.0" y="0.0" width="67.5" height="26"/>
-                                                                <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="22"/>
-                                                                <color key="textColor" name="MainLabelColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZc-Em-991">
-                                                                <rect key="frame" x="0.0" y="38" width="67.5" height="21"/>
-                                                                <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="18"/>
-                                                                <color key="textColor" name="MainLabelColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="kXW-IP-O54">
-                                                        <rect key="frame" x="0.0" y="75" width="221" height="68.5"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BD9-SG-6eO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="110" height="68.5"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remote from:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlP-dr-Wo9">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="110" height="17.5"/>
-                                                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
-                                                                        <color key="textColor" name="LabelGreyColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job function:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDI-mR-fHq">
-                                                                        <rect key="frame" x="0.0" y="25.5" width="110" height="17.5"/>
-                                                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
-                                                                        <color key="textColor" name="LabelGreyColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAq-uw-pwa">
-                                                                        <rect key="frame" x="0.0" y="51" width="110" height="17.5"/>
-                                                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
-                                                                        <color key="textColor" name="LabelGreyColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="110" id="PWO-CK-w4u"/>
-                                                                </constraints>
-                                                            </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5TL-NY-PPN">
-                                                                <rect key="frame" x="134" y="0.0" width="87" height="68.5"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jobGEO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xpb-A6-Cag">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="87" height="17.5"/>
-                                                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
-                                                                        <color key="textColor" name="MainLabelColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jobFunction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCD-ta-TW8">
-                                                                        <rect key="frame" x="0.0" y="25.5" width="87" height="17.5"/>
-                                                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
-                                                                        <color key="textColor" name="MainLabelColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jobType" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plz-w4-Etj">
-                                                                        <rect key="frame" x="0.0" y="51" width="87" height="17.5"/>
-                                                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
-                                                                        <color key="textColor" name="MainLabelColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                            </stackView>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGF-Rg-bvP">
-                                                        <rect key="frame" x="0.0" y="159.5" width="78.5" height="18"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGF-Rg-bvP">
+                                                <rect key="frame" x="16" y="8" width="343" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
-                                        <color key="backgroundColor" name="CustomScreenColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="PLb-CH-rIM" firstAttribute="leading" secondItem="q1C-ln-W5g" secondAttribute="leading" constant="16" id="9v1-3W-56h"/>
-                                            <constraint firstItem="PLb-CH-rIM" firstAttribute="top" secondItem="gWs-i0-mZL" secondAttribute="bottom" constant="20" id="S5Q-T5-p52"/>
-                                            <constraint firstAttribute="trailing" secondItem="gWs-i0-mZL" secondAttribute="trailing" constant="16" id="ZXF-HP-LaK"/>
-                                            <constraint firstItem="gWs-i0-mZL" firstAttribute="leading" secondItem="q1C-ln-W5g" secondAttribute="leading" constant="16" id="jGN-3Q-H8W"/>
-                                            <constraint firstAttribute="trailing" secondItem="PLb-CH-rIM" secondAttribute="trailing" constant="16" id="zGS-LM-gc8"/>
-                                            <constraint firstItem="gWs-i0-mZL" firstAttribute="top" secondItem="q1C-ln-W5g" secondAttribute="top" constant="8" id="zbd-w3-DYa"/>
+                                            <constraint firstItem="oGF-Rg-bvP" firstAttribute="leading" secondItem="FcD-MJ-iTr" secondAttribute="leading" constant="16" id="LdD-SE-d3L"/>
+                                            <constraint firstItem="oGF-Rg-bvP" firstAttribute="top" secondItem="FcD-MJ-iTr" secondAttribute="top" constant="8" id="Pm4-aX-dC7"/>
+                                            <constraint firstAttribute="trailing" secondItem="oGF-Rg-bvP" secondAttribute="trailing" constant="16" id="qkM-1v-SQC"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="oGF-Rg-bvP" secondAttribute="bottom" constant="8" id="yNo-jR-xh0"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="q1C-ln-W5g" firstAttribute="top" secondItem="Lhh-iG-e2h" secondAttribute="top" id="6br-AX-d1f"/>
-                                    <constraint firstAttribute="bottom" secondItem="q1C-ln-W5g" secondAttribute="bottom" id="9QZ-Vi-XAk"/>
-                                    <constraint firstItem="q1C-ln-W5g" firstAttribute="leading" secondItem="Lhh-iG-e2h" secondAttribute="leading" id="OEW-Nd-ULO"/>
-                                    <constraint firstItem="q1C-ln-W5g" firstAttribute="width" secondItem="Lhh-iG-e2h" secondAttribute="width" id="UAq-vj-TwU"/>
-                                    <constraint firstAttribute="trailing" secondItem="q1C-ln-W5g" secondAttribute="trailing" id="jhd-7l-Pg5"/>
-                                    <constraint firstItem="q1C-ln-W5g" firstAttribute="height" secondItem="Lhh-iG-e2h" secondAttribute="height" id="s1v-Ip-2c0"/>
+                                    <constraint firstItem="FcD-MJ-iTr" firstAttribute="leading" secondItem="xC9-yD-oMo" secondAttribute="leading" id="MPN-P8-7Ng"/>
+                                    <constraint firstAttribute="bottom" secondItem="FcD-MJ-iTr" secondAttribute="bottom" id="p51-Rv-SlI"/>
+                                    <constraint firstItem="FcD-MJ-iTr" firstAttribute="top" secondItem="xC9-yD-oMo" secondAttribute="top" id="ta2-cR-cBU"/>
+                                    <constraint firstAttribute="trailing" secondItem="FcD-MJ-iTr" secondAttribute="trailing" id="wXa-2Z-757"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="CRN-rh-wnd"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="FV1-5Z-fP6"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iPP-mZ-GNN"/>
                         <color key="backgroundColor" name="CustomScreenColor"/>
                         <constraints>
-                            <constraint firstItem="Lhh-iG-e2h" firstAttribute="top" secondItem="iPP-mZ-GNN" secondAttribute="top" id="EJA-bo-4Ao"/>
-                            <constraint firstItem="iPP-mZ-GNN" firstAttribute="bottom" secondItem="Lhh-iG-e2h" secondAttribute="bottom" id="H7G-9B-b4k"/>
-                            <constraint firstItem="iPP-mZ-GNN" firstAttribute="trailing" secondItem="Lhh-iG-e2h" secondAttribute="trailing" id="uQa-J0-Zro"/>
-                            <constraint firstItem="Lhh-iG-e2h" firstAttribute="leading" secondItem="iPP-mZ-GNN" secondAttribute="leading" id="wJ6-oQ-kji"/>
+                            <constraint firstItem="FcD-MJ-iTr" firstAttribute="width" secondItem="nn0-jN-2th" secondAttribute="width" id="APv-5T-foG"/>
+                            <constraint firstItem="xC9-yD-oMo" firstAttribute="leading" secondItem="iPP-mZ-GNN" secondAttribute="leading" id="HpE-Ul-GAS"/>
+                            <constraint firstItem="xC9-yD-oMo" firstAttribute="top" secondItem="iPP-mZ-GNN" secondAttribute="top" id="NVr-iO-Xyj"/>
+                            <constraint firstItem="xC9-yD-oMo" firstAttribute="bottom" secondItem="iPP-mZ-GNN" secondAttribute="bottom" id="d2H-yB-JXC"/>
+                            <constraint firstItem="xC9-yD-oMo" firstAttribute="trailing" secondItem="iPP-mZ-GNN" secondAttribute="trailing" id="hNf-Fq-8Zt"/>
+                            <constraint firstItem="FcD-MJ-iTr" firstAttribute="height" secondItem="nn0-jN-2th" secondAttribute="height" priority="250" id="z5m-u6-oOf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="sF9-3G-yHt">
@@ -338,21 +220,119 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <size key="freeformSize" width="375" height="667"/>
                     <connections>
-                        <outlet property="companyImage" destination="qI2-fF-gli" id="QvQ-vM-bjW"/>
-                        <outlet property="companyLabel" destination="soW-8W-ELq" id="jVq-a5-xUe"/>
-                        <outlet property="companyView" destination="gWs-i0-mZL" id="lf4-Wx-BMh"/>
-                        <outlet property="jobDescription" destination="oGF-Rg-bvP" id="gZd-Bb-dgD"/>
-                        <outlet property="jobFunctionLabel" destination="rCD-ta-TW8" id="7td-47-IBi"/>
-                        <outlet property="jobGeoLabel" destination="Xpb-A6-Cag" id="cha-GI-e2F"/>
-                        <outlet property="jobTypeLabel" destination="plz-w4-Etj" id="I0O-Ng-8G3"/>
-                        <outlet property="positionLabel" destination="sWv-Q1-6OG" id="vBH-t6-sU6"/>
-                        <outlet property="salaryLabel" destination="wZc-Em-991" id="FnB-oQ-aRj"/>
+                        <outlet property="jobDescription" destination="oGF-Rg-bvP" id="saJ-XD-1dh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nD9-ng-D8C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2396" y="2.2488755622188905"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="cHC-1G-Q2Z">
+            <objects>
+                <viewController id="5xO-H6-32d" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CEL-BZ-H39">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qI2-fF-gli">
+                                <rect key="frame" x="154" y="196" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWs-i0-mZL">
+                                <rect key="frame" x="35" y="58" width="110" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EME-ns-hAK">
+                                        <rect key="frame" x="118" y="36" width="96" height="48"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soW-8W-ELq">
+                                                <rect key="frame" x="0.0" y="0.0" width="96" height="20"/>
+                                                <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="17"/>
+                                                <color key="textColor" name="MainLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is hiring a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVS-s3-exI">
+                                                <rect key="frame" x="0.0" y="28" width="96" height="20"/>
+                                                <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="17"/>
+                                                <color key="textColor" name="MainLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" name="LabelBlueColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWv-Q1-6OG">
+                                <rect key="frame" x="47" y="375" width="103" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="22"/>
+                                <color key="textColor" name="MainLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Salary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZc-Em-991">
+                                <rect key="frame" x="32" y="472" width="103" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="18"/>
+                                <color key="textColor" name="MainLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BD9-SG-6eO">
+                                <rect key="frame" x="158" y="386" width="103" height="68.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remote from:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlP-dr-Wo9">
+                                        <rect key="frame" x="0.0" y="0.0" width="103" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
+                                        <color key="textColor" name="LabelGreyColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job function:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDI-mR-fHq">
+                                        <rect key="frame" x="0.0" y="25.5" width="103" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
+                                        <color key="textColor" name="LabelGreyColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAq-uw-pwa">
+                                        <rect key="frame" x="0.0" y="51" width="103" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
+                                        <color key="textColor" name="LabelGreyColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5TL-NY-PPN">
+                                <rect key="frame" x="0.0" y="501" width="87" height="68.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jobGEO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xpb-A6-Cag">
+                                        <rect key="frame" x="0.0" y="0.0" width="87" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
+                                        <color key="textColor" name="MainLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jobFunction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCD-ta-TW8">
+                                        <rect key="frame" x="0.0" y="25.5" width="87" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
+                                        <color key="textColor" name="MainLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jobType" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plz-w4-Etj">
+                                        <rect key="frame" x="0.0" y="51" width="87" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
+                                        <color key="textColor" name="MainLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cKK-Ec-C2b"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qNn-7s-gAi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3144.8000000000002" y="-12.143928035982009"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QvD-gq-ZzT">
@@ -401,6 +381,9 @@
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
