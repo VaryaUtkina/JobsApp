@@ -95,7 +95,23 @@ extension JobsViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        CGSize(width: collectionView.bounds.width - 32, height: 180)
+        let width = collectionView.bounds.width - 32
+        let job = jobs[indexPath.item]
+        
+        let label = UILabel()
+        label.font = UIFont(name: DejaVuSans.bold.rawValue, size: 19)
+        label.numberOfLines = 0
+        label.text = job.jobTitle
+        
+        let maxSize = CGSize(width: width - 40, height: CGFloat.greatestFiniteMagnitude)
+        let textHeight = label.sizeThatFits(maxSize).height
+        let lineHeight = UIFont(name: DejaVuSans.bold.rawValue, size: 19)?.lineHeight ?? 22
+
+        let numberOfLines = Int(textHeight/lineHeight)
+        let height: CGFloat = numberOfLines <= 1 ? 180 : 200
+        print(job.jobTitle, "textHeight: ", textHeight, "number of lines: ", numberOfLines)
+        
+        return CGSize(width: width, height: height)
     }
 }
 
