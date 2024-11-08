@@ -25,8 +25,6 @@ final class JobDetailsViewController: UIViewController {
     
     // MARK: - Public Properties
     var job: Job!
-    
-    // TODO: - put moon button
     var theme: Theme! {
         didSet {
             updateTheme(theme)
@@ -63,129 +61,34 @@ final class JobDetailsViewController: UIViewController {
 // MARK: - Set up UI
 extension JobDetailsViewController {
     private func setupUI() {
-//        setupView()
-//        companyLabel.text = job.companyName
-//        
-//        positionLabel.text = job.jobTitle
-//        salaryLabel.text = job.salaryRange
-//        
-//        jobGeoLabel.text = job.emojiGeo
-//        jobTypeLabel.text = job.jobType.joined(separator: ", ")
-//        
-//        applyStringFrom(
-//            htmlString: job.jobIndustry.joined(separator: ", "),
-//            toLabel: jobFunctionLabel
-//        )
+        setupView()
+        companyLabel.text = job.companyName
         
-        jobDescription.text = """
-            Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-        vbfhsbvdjbvs
-        vnjksndfvksjndf
-                    Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                vbfhsbvdjbvs
-                vnjksndfvksjndf
-                    Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                vbfhsbvdjbvs
-                vnjksndfvksjndf
-                    Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                vbfhsbvdjbvs
-                vnjksndfvksjndf
-                    Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                vbfhsbvdjbvs
-                vnjksndfvksjndf
-                    Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                vbfhsbvdjbvs
-                vnjksndfvksjndf
-        v
-        vGhbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-        vbfhsbvdjbvs
-        vnjksndfvksjndfGhbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-        vbfhsbvdjbvs
-        vnjksndfvksjndfGhbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-        vbfhsbvdjbvs
-        vnjksndfvksjndf
-                    Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                vbfhsbvdjbvs
-                vnjksndfvksjndf
-                    Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                vbfhsbvdjbvs
-                vnjksndfvksjndfGhbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-        vbfhsbvdjbvs
-        vnjksndfvksjndfGhbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-        vbfhsbvdjbvs
-        vnjksndfvksjndf
+        positionLabel.text = job.jobTitle
+        salaryLabel.text = job.salaryRange
         
+        jobGeoLabel.text = job.emojiGeo
+        jobTypeLabel.text = job.jobType.joined(separator: ", ")
         
-        hfhksjdhgksjdfg
-        bdskjbskfdg
-        
-        
-        sdfhgsdfgkjsdfnkfjskdfkjsdfkn hsfsjnb
-        dfksjdf nk jh hsfgnb llgb
-        kjbsdkfjvksjfd
-        
-        
-                    Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                vbfhsbvdjbvs
-                vnjksndfvksjndf
-                            Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                        vbfhsbvdjbvs
-                        vnjksndfvksjndf
-                            Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                        vbfhsbvdjbvs
-                        vnjksndfvksjndf
-                            Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                        vbfhsbvdjbvs
-                        vnjksndfvksjndf
-                            Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                        vbfhsbvdjbvs
-                        vnjksndfvksjndf
-                            Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                        vbfhsbvdjbvs
-                        vnjksndfvksjndf
-                v
-                vGhbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                vbfhsbvdjbvs
-                vnjksndfvksjndfGhbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                vbfhsbvdjbvs
-                vnjksndfvksjndfGhbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                vbfhsbvdjbvs
-                vnjksndfvksjndf
-                            Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                        vbfhsbvdjbvs
-                        vnjksndfvksjndf
-                            Ghbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                        vbfhsbvdjbvs
-                        vnjksndfvksjndfGhbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                vbfhsbvdjbvs
-                vnjksndfvksjndfGhbdjfod nvnjfsfjnv vnjvksfkbv nvdfjnvksjdfbv vdskjfbvkjbdfv 
-                vbfhsbvdjbvs
-                vnjksndfvksjndf
-                
-                
-                hfhksjdhgksjdfg
-                bdskjbskfdg
-                
-                
-                sdfhgsdfgkjsdfnkfjskdfkjsdfkn hsfsjnb
-                dfksjdf nk jh hsfgnb llgb
-                kjbsdkfjvksjfd
-        """
-//        applyStringFrom(
-//            htmlString: job.jobDescription,
-//            toLabel: jobDescription
-//        )
-//        setupHtmlLabels(jobDescription)
+        applyStringFrom(
+            htmlString: job.jobIndustry.joined(separator: ", "),
+            toLabel: jobFunctionLabel
+        )
+        applyStringFrom(
+            htmlString: job.jobDescription,
+            toLabel: jobDescription
+        )
+        setupHtmlLabels(jobDescription, jobFunctionLabel)
 
-//        networkManager.fetchData(from: job.companyLogo) { [unowned self] result in
-//            switch result {
-//            case .success(let imageData):
-//                companyImage.image = UIImage(data: imageData)
-//                companyImage.layer.cornerRadius = 20
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
+        networkManager.fetchData(from: job.companyLogo) { [unowned self] result in
+            switch result {
+            case .success(let imageData):
+                companyImage.image = UIImage(data: imageData)
+                companyImage.layer.cornerRadius = 20
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     private func setupView() {
