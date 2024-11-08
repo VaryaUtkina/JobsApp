@@ -70,14 +70,9 @@ extension JobDetailsViewController {
         jobGeoLabel.text = job.emojiGeo
         jobTypeLabel.text = job.jobType.joined(separator: ", ")
         
-        applyStringFrom(
-            htmlString: job.jobIndustry.joined(separator: ", "),
-            toLabel: jobFunctionLabel
-        )
-        applyStringFrom(
-            htmlString: job.jobDescription,
-            toLabel: jobDescription
-        )
+        jobFunctionLabel.attributedText = applyStringFrom(htmlString: job.jobIndustry.joined(separator: ", "))
+        jobDescription.attributedText = applyStringFrom(htmlString: job.jobDescription)
+        
         setupHtmlLabels(jobDescription, jobFunctionLabel)
 
         networkManager.fetchData(from: job.companyLogo) { [unowned self] result in
@@ -108,21 +103,21 @@ extension JobDetailsViewController {
         }
     }
     
-    private func applyStringFrom(htmlString: String,toLabel label: UILabel) {
-        if let data = htmlString.data(using: .utf8) {
-            do {
-                let attributedString = try NSAttributedString(
-                    data: data,
-                    options: [
-                        .documentType: NSAttributedString.DocumentType.html,
-                        .characterEncoding: String.Encoding.utf8.rawValue
-                    ],
-                    documentAttributes: nil
-                )
-                label.attributedText = attributedString
-            } catch {
-                label.text = ""
-            }
+    private func applyStringFrom(htmlString: String) -> NSAttributedString {
+        guard let data = htmlString.data(using: .utf8)  else { return NSAttributedString() }
+        do {
+            let attributedString = try NSAttributedString(
+                data: data,
+                options: [
+                    .documentType: NSAttributedString.DocumentType.html,
+                    .characterEncoding: String.Encoding.utf8.rawValue
+                ],
+                documentAttributes: nil
+            )
+            return attributedString
+        } catch {
+            print("Ошибка при создании NSAttributedString из HTML: \(error)")
+            return NSAttributedString()
         }
     }
 }
