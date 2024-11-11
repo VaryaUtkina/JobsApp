@@ -90,14 +90,13 @@ final class JobsViewController: UICollectionViewController {
     }
 }
 
-// TODO: - setup variable height
 extension JobsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        let width = collectionView.bounds.width - 32
+        let width = collectionView.bounds.width - 72
         let job = jobs[indexPath.item]
         
         let label = UILabel()
@@ -105,7 +104,7 @@ extension JobsViewController: UICollectionViewDelegateFlowLayout {
         label.numberOfLines = 0
         label.text = job.jobTitle
         
-        let maxSize = CGSize(width: width - 40, height: CGFloat.greatestFiniteMagnitude)
+        let maxSize = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
         let textHeight = label.sizeThatFits(maxSize).height
         let lineHeight = UIFont(name: DejaVuSans.bold.rawValue, size: 19)?.lineHeight ?? 22
 
