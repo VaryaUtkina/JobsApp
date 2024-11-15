@@ -19,10 +19,10 @@ enum InputTextStatus {
         switch self {
         case .usernameIsEmpty: "Oops..."
         case .passwordIsEmpty: "Oops..."
-        case .registrationError: "✗ Registration error"
+        case .registrationError: "✘ Registration error"
         case .registrationSucceed: "✔︎ Great!"
-        case .invalidUsername: "✗ Wrong format"
-        case .invalidPassword: "✗ Wrong format"
+        case .invalidUsername: "✘ Wrong format"
+        case .invalidPassword: "✘ Wrong format"
         }
     }
     
@@ -78,12 +78,19 @@ final class SignupViewController: UIViewController {
         userNameTF.becomeFirstResponder()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
     @IBAction func signupButtonPressed() {
         userNameTF.resignFirstResponder()
         passwordTF.resignFirstResponder()
         
         guard let inputName = userNameTF.text, !inputName.isEmpty else {
-            showAlert(withStatus: .usernameIsEmpty)
+            showAlert(withStatus: .usernameIsEmpty) { [unowned self] in
+                userNameTF.becomeFirstResponder()
+            }
             return
         }
         
@@ -97,18 +104,22 @@ final class SignupViewController: UIViewController {
         }
         
         if !checkUsername(inputName) {
-            showAlert(withStatus: .registrationError)
+            showAlert(withStatus: .registrationError) { [unowned self] in
+                userNameTF.becomeFirstResponder()
+            }
         }
         
         guard let inputPassword = passwordTF.text, !inputPassword.isEmpty else {
-            showAlert(withStatus: .passwordIsEmpty)
+            showAlert(withStatus: .passwordIsEmpty) { [unowned self] in
+                passwordTF.becomeFirstResponder()
+            }
             return
         }
         
         if !isPasswordLengthValid(inputPassword) ||
             !isPasswordContainsNoWhitespaces(inputPassword) ||
             !isPasswordPatternValid(inputPassword) {
-            showAlert(withStatus: .invalidPassword) { [unowned self] in 
+            showAlert(withStatus: .invalidPassword) { [unowned self] in
                 passwordTF.becomeFirstResponder()
             }
             return
@@ -118,7 +129,7 @@ final class SignupViewController: UIViewController {
         
         register(user: user)
         showAlert(withStatus: .registrationSucceed)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [unowned self] in
             dismiss(animated: true)
         }
     }
