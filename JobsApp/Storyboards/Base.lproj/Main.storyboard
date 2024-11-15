@@ -464,7 +464,7 @@
                                         <rect key="frame" x="0.0" y="26.5" width="215" height="34"/>
                                         <color key="backgroundColor" name="CustomViewColor"/>
                                         <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQB-EH-Bgo">
                                         <rect key="frame" x="0.0" y="69.5" width="215" height="17.5"/>
@@ -476,7 +476,7 @@
                                         <rect key="frame" x="0.0" y="96" width="215" height="34"/>
                                         <color key="backgroundColor" name="CustomViewColor"/>
                                         <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cdb-Qj-7u9">
                                         <rect key="frame" x="0.0" y="139" width="215" height="32"/>
@@ -492,7 +492,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="signupButtonAction" destination="Fob-dj-suy" eventType="touchUpInside" id="vAS-8V-Esj"/>
+                                            <action selector="signupButtonPressed" destination="bKf-x6-LP8" eventType="touchUpInside" id="3Sq-gf-tCt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -506,6 +506,10 @@
                             <constraint firstItem="akL-BP-wpv" firstAttribute="leading" secondItem="rxe-Tt-ruw" secondAttribute="leading" constant="80" id="FQs-OB-yEm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="passwordTF" destination="DhZ-nE-mgC" id="AJr-71-vrc"/>
+                        <outlet property="userNameTF" destination="afd-FA-bQ2" id="JB6-L7-RFS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfy-bT-vDL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

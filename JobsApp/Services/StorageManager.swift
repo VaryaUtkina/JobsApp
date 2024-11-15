@@ -12,6 +12,7 @@ final class StorageManager {
     
     private let userDefaults = UserDefaults.standard
     private let themeKey = "theme"
+    private let userKey = "users"
     
     private init() {}
     
@@ -24,5 +25,17 @@ final class StorageManager {
     func save(theme: Theme) {
         guard let data = try? JSONEncoder().encode(theme) else { return }
         userDefaults.set(data, forKey: themeKey)
+    }
+    
+    func fetchUsers() -> [User] {
+        guard let data = userDefaults.data(forKey: userKey) else { return [] }
+        guard let users = try? JSONDecoder().decode([User].self, from: data) else { return [] }
+        return users
+    }
+    
+    func save(users: [User]) {
+        guard let data = try? JSONEncoder().encode(users) else { return }
+        userDefaults.set(data, forKey: userKey)
+        print(users)
     }
 }
