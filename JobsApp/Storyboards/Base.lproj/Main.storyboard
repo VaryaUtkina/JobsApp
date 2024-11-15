@@ -362,7 +362,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="8md-Ws-P0N">
-                                <rect key="frame" x="80" y="173" width="215" height="201"/>
+                                <rect key="frame" x="80" y="175" width="215" height="197.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SeS-Cw-dW0">
                                         <rect key="frame" x="0.0" y="0.0" width="215" height="34"/>
@@ -376,33 +376,44 @@
                                         <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVe-Rz-5Qh">
-                                        <rect key="frame" x="0.0" y="86" width="215" height="34"/>
-                                        <color key="tintColor" name="LabelBlueColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Log in">
-                                            <fontDescription key="titleFontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="17"/>
-                                            <color key="baseForegroundColor" name="CustomViewColor"/>
-                                        </buttonConfiguration>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVe-Rz-5Qh">
+                                        <rect key="frame" x="0.0" y="86" width="215" height="32"/>
+                                        <color key="backgroundColor" name="LabelBlueColor"/>
+                                        <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="17"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Log in">
+                                            <color key="titleColor" name="CustomViewColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="loginButtonAction" destination="Fob-dj-suy" eventType="touchUpInside" id="exc-IB-6dl"/>
                                             <segue destination="m6b-sG-W7U" kind="presentation" modalPresentationStyle="fullScreen" id="CKx-m0-lwj"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTr-Dp-ZGB">
-                                        <rect key="frame" x="0.0" y="129" width="215" height="31.5"/>
-                                        <color key="tintColor" name="CustomViewColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Sign up">
-                                            <fontDescription key="titleFontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="15"/>
-                                            <color key="baseForegroundColor" name="LabelBlueColor"/>
-                                        </buttonConfiguration>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTr-Dp-ZGB">
+                                        <rect key="frame" x="0.0" y="127" width="215" height="30"/>
+                                        <color key="backgroundColor" name="CustomViewColor"/>
+                                        <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Sign up">
+                                            <color key="titleColor" name="LabelBlueColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="signupButtonAction" destination="Fob-dj-suy" eventType="touchUpInside" id="enh-gh-LyQ"/>
+                                            <segue destination="bKf-x6-LP8" kind="presentation" modalPresentationStyle="fullScreen" id="1Mz-c6-QwR"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWi-cp-A5S">
-                                        <rect key="frame" x="0.0" y="169.5" width="215" height="31.5"/>
+                                        <rect key="frame" x="0.0" y="166" width="215" height="31.5"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Forgot password?">
                                             <fontDescription key="titleFontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
@@ -431,6 +442,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAj-wQ-fAv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="41" y="2"/>
+        </scene>
+        <!--Signup View Controller-->
+        <scene sceneID="IIy-6L-yFX">
+            <objects>
+                <viewController id="bKf-x6-LP8" customClass="SignupViewController" customModule="JobsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MAo-sA-ja1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="akL-BP-wpv">
+                                <rect key="frame" x="80" y="188" width="215" height="171"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create your User name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dso-bU-JgT">
+                                        <rect key="frame" x="0.0" y="0.0" width="215" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
+                                        <color key="textColor" name="LabelGreyColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="afd-FA-bQ2">
+                                        <rect key="frame" x="0.0" y="26.5" width="215" height="34"/>
+                                        <color key="backgroundColor" name="CustomViewColor"/>
+                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQB-EH-Bgo">
+                                        <rect key="frame" x="0.0" y="69.5" width="215" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="15"/>
+                                        <color key="textColor" name="LabelGreyColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DhZ-nE-mgC">
+                                        <rect key="frame" x="0.0" y="96" width="215" height="34"/>
+                                        <color key="backgroundColor" name="CustomViewColor"/>
+                                        <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cdb-Qj-7u9">
+                                        <rect key="frame" x="0.0" y="139" width="215" height="32"/>
+                                        <color key="backgroundColor" name="LabelBlueColor"/>
+                                        <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="17"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Sign up">
+                                            <color key="titleColor" name="CustomViewColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="signupButtonAction" destination="Fob-dj-suy" eventType="touchUpInside" id="vAS-8V-Esj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rxe-Tt-ruw"/>
+                        <color key="backgroundColor" name="CustomScreenColor"/>
+                        <constraints>
+                            <constraint firstItem="akL-BP-wpv" firstAttribute="centerY" secondItem="MAo-sA-ja1" secondAttribute="centerY" constant="-60" id="8mV-ii-YBe"/>
+                            <constraint firstItem="rxe-Tt-ruw" firstAttribute="trailing" secondItem="akL-BP-wpv" secondAttribute="trailing" constant="80" id="EbD-Zt-2dJ"/>
+                            <constraint firstItem="akL-BP-wpv" firstAttribute="leading" secondItem="rxe-Tt-ruw" secondAttribute="leading" constant="80" id="FQs-OB-yEm"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jfy-bT-vDL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="41" y="707"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QvD-gq-ZzT">
