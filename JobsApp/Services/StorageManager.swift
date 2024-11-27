@@ -52,4 +52,12 @@ final class StorageManager {
         userDefaults.set(data, forKey: userKey)
         Log.debug("Сохранены пользователи: \(users)")
     }
+    
+    func findUser(withUsername userName: String) -> User? {
+        let users = fetchUsers()
+        if let user = users.filter({ $0.name == userName }).first {
+            return user
+        }
+        return nil
+    }
 }

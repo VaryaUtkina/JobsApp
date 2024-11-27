@@ -408,7 +408,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="signupButtonAction" destination="Fob-dj-suy" eventType="touchUpInside" id="enh-gh-LyQ"/>
                                             <segue destination="bKf-x6-LP8" kind="show" id="1Mz-c6-QwR"/>
                                         </connections>
                                     </button>
@@ -440,7 +439,6 @@
                     <connections>
                         <outlet property="passwordTF" destination="9Sw-AD-FHG" id="Bnd-r4-IgQ"/>
                         <outlet property="userNameTF" destination="SeS-Cw-dW0" id="3cq-pi-8Ak"/>
-                        <outlet property="usernameTF" destination="SeS-Cw-dW0" id="vsV-ew-sci"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAj-wQ-fAv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
