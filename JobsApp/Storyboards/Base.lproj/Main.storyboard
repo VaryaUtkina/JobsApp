@@ -440,6 +440,7 @@
                     <connections>
                         <outlet property="passwordTF" destination="9Sw-AD-FHG" id="Bnd-r4-IgQ"/>
                         <outlet property="userNameTF" destination="SeS-Cw-dW0" id="3cq-pi-8Ak"/>
+                        <outlet property="usernameTF" destination="SeS-Cw-dW0" id="vsV-ew-sci"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAj-wQ-fAv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

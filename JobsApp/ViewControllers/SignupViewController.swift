@@ -67,6 +67,8 @@ final class SignupViewController: UIViewController {
     @IBOutlet var userNameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
+    var delegate: SignupViewControllerDelegate?
+    
     private let storageManager = StorageManager.shared
     private var userName = ""
     private var password = ""
@@ -75,6 +77,10 @@ final class SignupViewController: UIViewController {
         super.viewDidLoad()
         userNameTF.delegate = self
         passwordTF.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         userNameTF.becomeFirstResponder()
     }
     
@@ -97,6 +103,7 @@ final class SignupViewController: UIViewController {
         if !isUsernameLengthValid(inputName) ||
             !isUsernameContainsNoWhitespaces(inputName) ||
             !isUsernamePatternValid(inputName) {
+            Log.error("Ошибка при проверке данных")
             showAlert(withStatus: .invalidUsername) { [unowned self] in
                 userNameTF.becomeFirstResponder()
             }
@@ -104,12 +111,15 @@ final class SignupViewController: UIViewController {
         }
         
         if !checkUsername(inputName) {
+            Log.error("Ошибка при проверке данных")
             showAlert(withStatus: .registrationError) { [unowned self] in
                 userNameTF.becomeFirstResponder()
             }
+            return
         }
         
         guard let inputPassword = passwordTF.text, !inputPassword.isEmpty else {
+            Log.error("Ошибка при проверке данных")
             showAlert(withStatus: .passwordIsEmpty) { [unowned self] in
                 passwordTF.becomeFirstResponder()
             }
@@ -119,6 +129,7 @@ final class SignupViewController: UIViewController {
         if !isPasswordLengthValid(inputPassword) ||
             !isPasswordContainsNoWhitespaces(inputPassword) ||
             !isPasswordPatternValid(inputPassword) {
+            Log.error("Ошибка при проверке данных")
             showAlert(withStatus: .invalidPassword) { [unowned self] in
                 passwordTF.becomeFirstResponder()
             }
@@ -127,10 +138,14 @@ final class SignupViewController: UIViewController {
         
         let user = User(name: inputName, password: inputPassword)
         
+        Log.debug("Пользователь регистрируется: \(user)")
         register(user: user)
+        delegate?.updateTF(user.name)
         showAlert(withStatus: .registrationSucceed)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [unowned self] in
+            view.endEditing(true)
             dismiss(animated: true)
+            navigationController?.popViewController(animated: true)
         }
     }
     
@@ -212,6 +227,22 @@ extension SignupViewController: UITextFieldDelegate {
             passwordTF.becomeFirstResponder()
         } else if textField == passwordTF {
             signupButtonPressed()
+        }
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard textField == userNameTF else { return true }
+        guard let inputText = textField.text as NSString? else { return true }
+        let updatedText = inputText.replacingCharacters(in: range, with: string)
+        if !isUsernameLengthValid(updatedText) ||
+            !isUsernameContainsNoWhitespaces(updatedText) ||
+            !isUsernamePatternValid(updatedText) {
+            textField.layer.borderWidth = 1
+            textField.layer.borderColor = UIColor.red.cgColor
+        } else {
+            textField.layer.borderWidth = 0
+            textField.layer.borderColor = nil
         }
         return true
     }

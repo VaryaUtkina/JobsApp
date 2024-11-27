@@ -36,10 +36,7 @@ final class StorageManager {
     }
     
     func fetchUsers() -> [User] {
-        guard let data = userDefaults.data(forKey: userKey) else {
-            Log.debug("Данные для 'userKey' не найдены. Возвращается пустой список пользователей")
-            return []
-        }
+        guard let data = userDefaults.data(forKey: userKey) else { return [] }
         guard let users = try? JSONDecoder().decode([User].self, from: data) else {
             Log.error("Ошибка декодирования списка пользователей")
             return []

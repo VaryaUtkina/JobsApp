@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48D9C0AC2CD400EB00E2368D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 48D9C0AB2CD400EB00E2368D /* Alamofire */; };
+		488D3B3B2CF749F500AC1CE0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 488D3B3A2CF749F500AC1CE0 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48D9C0AC2CD400EB00E2368D /* Alamofire in Frameworks */,
+				488D3B3B2CF749F500AC1CE0 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +83,7 @@
 			);
 			name = JobsApp;
 			packageProductDependencies = (
-				48D9C0AB2CD400EB00E2368D /* Alamofire */,
+				488D3B3A2CF749F500AC1CE0 /* Alamofire */,
 			);
 			productName = JobsApp;
 			productReference = 48CB37732CD274980072FF6D /* JobsApp.app */;
@@ -114,7 +114,7 @@
 			mainGroup = 48CB376A2CD274980072FF6D;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				48D9C0AA2CD400EB00E2368D /* XCRemoteSwiftPackageReference "Alamofire" */,
+				488D3B392CF749F500AC1CE0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 48CB37742CD274980072FF6D /* Products */;
@@ -352,20 +352,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		48D9C0AA2CD400EB00E2368D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		488D3B392CF749F500AC1CE0 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.10.1;
+				minimumVersion = 5.10.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		48D9C0AB2CD400EB00E2368D /* Alamofire */ = {
+		488D3B3A2CF749F500AC1CE0 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 48D9C0AA2CD400EB00E2368D /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 488D3B392CF749F500AC1CE0 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
