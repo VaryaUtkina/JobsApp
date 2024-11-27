@@ -36,6 +36,7 @@ final class NetworkManager {
                 case .success(let jobList):
                     completion(.success(jobList))
                 case .failure(let error):
+                    Log.error("Ошибка при запросе: \(error)")
                     completion(.failure(error))
                 }
             }
@@ -49,6 +50,7 @@ final class NetworkManager {
                 case .success(let data):
                     completion(.success(data))
                 case .failure(let error):
+                    Log.error("Ошибка при загрузке данных: \(error)")
                     completion(.failure(error))
                 }
                 
