@@ -151,7 +151,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="Jobs" id="WpH-Eb-2K3">
                         <rightBarButtonItems>
-                            <barButtonItem image="person.fill" catalog="system" id="Ge9-S6-vPE">
+                            <barButtonItem tag="1" image="person.fill" catalog="system" id="Ge9-S6-vPE">
                                 <color key="tintColor" name="LabelGreyColor"/>
                             </barButtonItem>
                             <barButtonItem title="Item" id="iq9-QU-2U1">

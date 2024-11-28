@@ -34,6 +34,7 @@ final class LoginViewController: UIViewController {
     
     private let storageManager = StorageManager.shared
     private var isPrivate = true
+    private var theme = Theme.light
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -44,6 +45,9 @@ final class LoginViewController: UIViewController {
         
         passwordTF.rightView = eyeButton
         passwordTF.rightViewMode = .always
+        
+        theme = storageManager.fetchTheme()
+        updateTheme(theme)
     }
     
     // MARK: - Override Methods
@@ -56,10 +60,12 @@ final class LoginViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let signupVC = segue.destination as? SignupViewController {
             signupVC.delegate = self
+            signupVC.theme = theme
         }
         if let navigationVC = segue.destination as? UINavigationController {
             guard let jobsVC = navigationVC.topViewController as? JobsViewController else { return }
             jobsVC.user = sender as? User
+            jobsVC.theme = theme
         }
     }
 
@@ -99,6 +105,11 @@ final class LoginViewController: UIViewController {
         sender.setImage(UIImage(systemName: imageName), for: .normal)
         isPrivate.toggle()
     }
+    
+//    private func updateTheme(_ theme: Theme) {
+//        overrideUserInterfaceStyle = theme.style
+//        navigationController?.overrideUserInterfaceStyle = theme.style
+//    }
 }
 
 // MARK: - UITextFieldDelegate

@@ -7,67 +7,13 @@
 
 import UIKit
 
-enum InputTextStatus {
-    case usernameIsEmpty
-    case passwordIsEmpty
-    case registrationError
-    case registrationSucceed
-    case invalidUsername
-    case invalidPassword
-    
-    var title: String {
-        switch self {
-        case .usernameIsEmpty: "Oops..."
-        case .passwordIsEmpty: "Oops..."
-        case .registrationError: "✘ Registration error"
-        case .registrationSucceed: "✔︎ Great!"
-        case .invalidUsername: "✘ Wrong format"
-        case .invalidPassword: "✘ Wrong format"
-        }
-    }
-    
-    var message: String {
-        switch self {
-        case .usernameIsEmpty: 
-            "Please enter your username"
-        case .passwordIsEmpty: 
-            "Please create a password"
-        case .registrationError: 
-            "A user with this name already exists. Please choose a different name"
-        case .registrationSucceed: 
-            "Your account has been created successfully"
-        case .invalidUsername:
-            """
-                Please, use in your username only:
-                 - latin letters (A-Z, a-z)
-                 - numbers 0-9
-                 - special symbols ("_", "-", ".")
-            
-                Minimum length of a username must be at least 4 characters, but not more than 20
-                
-                Don't use spaces in your username
-            """
-        case .invalidPassword:
-            """
-                Please, use in your password only:
-                 - latin letters (A-Z, a-z)
-                 - numbers 0-9
-                 - special symbols ("!", "#", "$", "%", "^", "&", "*", "-", "_", "=", "+", ".", "/", "|")
-            
-                Minimum length of a password must be at least 8 characters
-                
-                Don't use spaces in your password
-            """
-        }
-    }
-}
-
 final class SignupViewController: UIViewController {
 
     @IBOutlet var userNameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
     var delegate: SignupViewControllerDelegate?
+    var theme: Theme!
     
     private let storageManager = StorageManager.shared
     private var userName = ""
@@ -75,8 +21,11 @@ final class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         userNameTF.delegate = self
         passwordTF.delegate = self
+        
+        updateTheme(theme)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -245,5 +194,63 @@ extension SignupViewController: UITextFieldDelegate {
             textField.layer.borderColor = nil
         }
         return true
+    }
+}
+
+// MARK: - InputTextStatus
+extension SignupViewController {
+    enum InputTextStatus {
+        case usernameIsEmpty
+        case passwordIsEmpty
+        case registrationError
+        case registrationSucceed
+        case invalidUsername
+        case invalidPassword
+        
+        var title: String {
+            switch self {
+            case .usernameIsEmpty: "Oops..."
+            case .passwordIsEmpty: "Oops..."
+            case .registrationError: "✘ Registration error"
+            case .registrationSucceed: "✔︎ Great!"
+            case .invalidUsername: "✘ Wrong format"
+            case .invalidPassword: "✘ Wrong format"
+            }
+        }
+        
+        var message: String {
+            switch self {
+            case .usernameIsEmpty:
+                "Please enter your username"
+            case .passwordIsEmpty:
+                "Please create a password"
+            case .registrationError:
+                "A user with this name already exists. Please choose a different name"
+            case .registrationSucceed:
+                "Your account has been created successfully"
+            case .invalidUsername:
+                """
+                    Please, use in your username only:
+                     - latin letters (A-Z, a-z)
+                     - numbers 0-9
+                     - special symbols ("_", "-", ".")
+                
+                    Minimum length of a username must be at least 4 characters, but not more than 20
+                    
+                    Don't use spaces in your username
+                """
+            case .invalidPassword:
+                """
+                    Please, use in your password only:
+                     - latin letters (A-Z, a-z)
+                     - numbers 0-9
+                     - special symbols ("!", "#", "$", "%", "^", "&", "*", "-", "_", "=", "+", ".", "/", "|")
+                
+                    Minimum length of a password must be at least 8 characters
+                    
+                    Don't use spaces in your password
+                """
+            }
+        }
     }
 }

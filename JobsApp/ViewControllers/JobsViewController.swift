@@ -25,18 +25,21 @@ protocol JobDetailsViewControllerDelegate: AnyObject {
 
 final class JobsViewController: UICollectionViewController {
 
+    var user: User!
+    var theme: Theme! {
+        didSet {
+            updateCustomTheme(theme)
+        }
+    }
+    
     private let networkManager = NetworkManager.shared
     private let storageManager = StorageManager.shared
     private var jobs: [Job] = []
-    private var theme = Theme.light
-    
-    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        theme = storageManager.fetchTheme()
-        updateTheme(theme)
+        updateCustomTheme(theme)
         fetchJobs()
         
         navigationController?.navigationBar.tintColor = .mainLabel
@@ -67,7 +70,6 @@ final class JobsViewController: UICollectionViewController {
     @IBAction func moonButtonAction(_ sender: UIBarButtonItem) {
         theme = (theme == .light) ? .dark : .light
         
-        updateTheme(theme)
         storageManager.save(theme: theme)
     }
     
@@ -83,15 +85,24 @@ final class JobsViewController: UICollectionViewController {
         }
     }
     
-    internal func updateTheme(_ theme: Theme) {
-        overrideUserInterfaceStyle = theme.style
-        navigationController?.overrideUserInterfaceStyle = theme.style
-        navigationItem.rightBarButtonItem?.image = theme == .light
-        ? UIImage(systemName: "moon")
-        : UIImage(systemName: "moon.fill")
+    private func updateCustomTheme(_ theme: Theme) {
+        super.updateTheme(theme)
+        guard let buttonItems = navigationItem.rightBarButtonItems else {
+            Log.error("No button item")
+            return
+        }
+        for button in buttonItems {
+            if button.tag == 0 {
+                Log.debug("Button tag is succeeded")
+                button.image = theme == .light
+                ? UIImage(systemName: "moon")
+                : UIImage(systemName: "moon.fill")
+            }
+        }
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension JobsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
@@ -117,9 +128,10 @@ extension JobsViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - JobDetailsViewControllerDelegate
 extension JobsViewController: JobDetailsViewControllerDelegate {
     func reloadTheme(_ theme: Theme) {
         self.theme = theme
-        updateTheme(theme)
+        updateCustomTheme(theme)
     }
 }

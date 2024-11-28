@@ -27,7 +27,7 @@ final class JobDetailsViewController: UIViewController {
     var job: Job!
     var theme: Theme! {
         didSet {
-            updateTheme(theme)
+            updateCustomTheme(theme)
         }
     }
     weak var delegate: JobDetailsViewControllerDelegate?
@@ -40,18 +40,17 @@ final class JobDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        updateTheme(theme)
+        updateCustomTheme(theme)
     }
     @IBAction func moonButtonAction(_ sender: UIBarButtonItem) {
         theme = (theme == .light) ? .dark : .light
-
+        
         storageManager.save(theme: theme)
         delegate?.reloadTheme(theme)
     }
     
-    private func updateTheme(_ theme: Theme) {
-        overrideUserInterfaceStyle = theme.style
-        navigationController?.overrideUserInterfaceStyle = theme.style
+    private func updateCustomTheme(_ theme: Theme) {
+        super.updateTheme(theme)
         navigationItem.rightBarButtonItem?.image = theme == .light
         ? UIImage(systemName: "moon")
         : UIImage(systemName: "moon.fill")
@@ -116,7 +115,7 @@ extension JobDetailsViewController {
             )
             return attributedString
         } catch {
-            print("Ошибка при создании NSAttributedString из HTML: \(error)")
+            Log.error("Ошибка при создании NSAttributedString из HTML: \(error)")
             return NSAttributedString()
         }
     }
