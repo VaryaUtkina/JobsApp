@@ -16,10 +16,36 @@ final class LoginViewController: UIViewController {
     @IBOutlet var userNameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
+    lazy private var eyeButton: UIButton = {
+        let eyeButton = UIButton(type: .custom)
+        eyeButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        eyeButton.tintColor = .labelGrey
+         
+        eyeButton.addTarget(
+            self,
+            action: #selector(togglePasswordVisibility),
+            for: .touchUpInside
+        )
+        eyeButton.isEnabled = false
+        return eyeButton
+    }()
+    
     private let storageManager = StorageManager.shared
+    private var isPrivate = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userNameTF.delegate = self
+        passwordTF.delegate = self
+        
+        passwordTF.rightView = eyeButton
+        passwordTF.rightViewMode = .always
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -38,6 +64,32 @@ final class LoginViewController: UIViewController {
                 showAlert(for: .tryAgain)
             }
         }
+    }
+    
+    @objc func togglePasswordVisibility(sender: UIButton) {
+        let imageName = isPrivate ? "eye" : "eye.slash"
+        
+        passwordTF.isSecureTextEntry.toggle()
+        sender.setImage(UIImage(systemName: imageName), for: .normal)
+        isPrivate.toggle()
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == userNameTF {
+            userNameTF.resignFirstResponder()
+            passwordTF.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = passwordTF.text else { return }
+        eyeButton.isEnabled = !text.isEmpty
     }
 }
 

@@ -374,7 +374,7 @@
                                         <rect key="frame" x="0.0" y="43" width="215" height="34"/>
                                         <color key="backgroundColor" name="CustomViewColor"/>
                                         <fontDescription key="fontDescription" name="DejaVuSans" family="DejaVu Sans" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVe-Rz-5Qh">
                                         <rect key="frame" x="0.0" y="86" width="215" height="32"/>
