@@ -30,6 +30,8 @@ final class JobsViewController: UICollectionViewController {
     private var jobs: [Job] = []
     private var theme = Theme.light
     
+    var user: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -13,9 +13,11 @@ protocol SignupViewControllerDelegate: AnyObject {
 
 final class LoginViewController: UIViewController {
     
+    // MARK: - IB Outlets
     @IBOutlet var userNameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
+    // MARK: - Private Properties
     lazy private var eyeButton: UIButton = {
         let eyeButton = UIButton(type: .custom)
         eyeButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
@@ -33,6 +35,7 @@ final class LoginViewController: UIViewController {
     private let storageManager = StorageManager.shared
     private var isPrivate = true
     
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,30 +46,53 @@ final class LoginViewController: UIViewController {
         passwordTF.rightViewMode = .always
     }
     
+    // MARK: - Override Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
     
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let signupVC = segue.destination as? SignupViewController else { return }
-        signupVC.delegate = self
+        if let signupVC = segue.destination as? SignupViewController {
+            signupVC.delegate = self
+        }
+        if let navigationVC = segue.destination as? UINavigationController {
+            guard let jobsVC = navigationVC.topViewController as? JobsViewController else { return }
+            jobsVC.user = sender as? User
+        }
     }
 
+    // MARK: - IB Actions
     @IBAction func loginButtonAction() {
+        userNameTF.resignFirstResponder()
+        passwordTF.resignFirstResponder()
+        
+        if let login = userNameTF.text, !login.isEmpty, let password = passwordTF.text, !password.isEmpty {
+            let user = storageManager.findUser(withUsername: login)
+            if user != nil, user?.password == password {
+                performSegue(withIdentifier: "ShowJobs", sender: user)
+            } else {
+                showAlert(for: .simpleOK(title: "✘ User not found", message: "Check your Username and password"))
+            }
+            return
+        }
+        showAlert(for: .simpleOK(title: "✘ Error", message: "Please, enter your login and password"))
     }
+    
     @IBAction func forgotButtonAction() {
         showAlert(for: .getPassword) { [weak self] user in
             guard let self else { return }
             if let user {
-                showAlert(for: .simpleOK(message: "Your password: \(user.password)"))
+                showAlert(for: .simpleOK(title: "✔︎ User was found", message: "Your password: \(user.password)"))
             } else {
                 showAlert(for: .tryAgain)
             }
         }
     }
     
-    @objc func togglePasswordVisibility(sender: UIButton) {
+    // MARK: - Private Methods
+    @objc private func togglePasswordVisibility(sender: UIButton) {
         let imageName = isPrivate ? "eye" : "eye.slash"
         
         passwordTF.isSecureTextEntry.toggle()
@@ -104,7 +130,7 @@ extension LoginViewController: SignupViewControllerDelegate {
 private extension LoginViewController {
     enum AlertType {
         case getPassword
-        case simpleOK(message: String)
+        case simpleOK(title: String, message: String)
         case tryAgain
         
         var configuration: (
@@ -124,9 +150,9 @@ private extension LoginViewController {
                     ],
                     textFieldNeeded: true
                 )
-            case .simpleOK(let message):
+            case .simpleOK(let title, let message):
                 (
-                    title: "✔︎ User was found",
+                    title: title,
                     message: message,
                     actions: [
                         UIAlertAction(title: "OK", style: .default)
@@ -175,7 +201,7 @@ private extension LoginViewController {
             showAlert(for: .getPassword) { [weak self] user in
                 guard let self else { return }
                 if let user {
-                    showAlert(for: .simpleOK(message: "Your password: \(user.password)"))
+                    showAlert(for: .simpleOK(title: "✔︎ User was found", message: "Your password: \(user.password)"))
                 } else {
                     showAlert(for: .tryAgain)
                 }

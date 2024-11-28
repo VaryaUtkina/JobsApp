@@ -150,13 +150,18 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Jobs" id="WpH-Eb-2K3">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="iq9-QU-2U1">
-                            <imageReference key="image" image="moon" catalog="system" variableValue="1"/>
-                            <color key="tintColor" name="LabelGreyColor"/>
-                            <connections>
-                                <action selector="moonButtonAction:" destination="WOL-qF-wem" id="qdQ-cm-eCV"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="person.fill" catalog="system" id="Ge9-S6-vPE">
+                                <color key="tintColor" name="LabelGreyColor"/>
+                            </barButtonItem>
+                            <barButtonItem title="Item" id="iq9-QU-2U1">
+                                <imageReference key="image" image="moon" catalog="system" variableValue="1"/>
+                                <color key="tintColor" name="LabelGreyColor"/>
+                                <connections>
+                                    <action selector="moonButtonAction:" destination="WOL-qF-wem" id="qdQ-cm-eCV"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dlf-mV-4kx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -391,7 +396,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="loginButtonAction" destination="Fob-dj-suy" eventType="touchUpInside" id="exc-IB-6dl"/>
-                                            <segue destination="m6b-sG-W7U" kind="presentation" modalPresentationStyle="fullScreen" id="CKx-m0-lwj"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTr-Dp-ZGB">
@@ -439,6 +443,7 @@
                     <connections>
                         <outlet property="passwordTF" destination="9Sw-AD-FHG" id="Bnd-r4-IgQ"/>
                         <outlet property="userNameTF" destination="SeS-Cw-dW0" id="3cq-pi-8Ak"/>
+                        <segue destination="m6b-sG-W7U" kind="presentation" identifier="ShowJobs" modalPresentationStyle="fullScreen" id="UuU-Na-t3x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAj-wQ-fAv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -529,6 +534,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m6b-sG-W7U" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="J0O-E7-tNf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Mzj-2t-lsN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -573,6 +579,7 @@
     <resources>
         <image name="bag" catalog="system" width="128" height="128"/>
         <image name="moon" catalog="system" width="128" height="123"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <namedColor name="CustomScreenColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
