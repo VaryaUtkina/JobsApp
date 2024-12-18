@@ -165,11 +165,111 @@
                     </navigationItem>
                     <connections>
                         <outlet property="personButton" destination="Ge9-S6-vPE" id="HGs-e5-0EM"/>
+                        <segue destination="TbT-pX-y2F" kind="show" identifier="showProfile" id="iqZ-tB-Jog"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dlf-mV-4kx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2540" y="2.2488755622188905"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="nKR-Od-x2M">
+            <objects>
+                <viewController id="TbT-pX-y2F" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cwq-HB-ChX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GCG-x8-pl4">
+                                <rect key="frame" x="16" y="104" width="343" height="152"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ifM-vr-h7t">
+                                        <rect key="frame" x="8" y="16" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ifM-vr-h7t" secondAttribute="height" multiplier="1:1" id="H1t-hZ-7LH"/>
+                                            <constraint firstAttribute="width" constant="120" id="zB4-Ab-Vhq"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="ciw-vd-pXb">
+                                        <rect key="frame" x="132" y="40" width="203" height="57.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQU-km-15S">
+                                                <rect key="frame" x="0.0" y="0.0" width="203" height="23.5"/>
+                                                <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="20"/>
+                                                <color key="textColor" name="MainLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dzh-p5-g8F">
+                                                <rect key="frame" x="0.0" y="35.5" width="203" height="22"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soW-8W-ELq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="173" height="22"/>
+                                                        <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="17"/>
+                                                        <color key="textColor" name="MainLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Owq-mf-KAY">
+                                                        <rect key="frame" x="173" y="0.0" width="30" height="22"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="30" id="QUF-c7-SFv"/>
+                                                        </constraints>
+                                                        <color key="tintColor" name="MainLabelColor"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal">
+                                                            <imageReference key="image" image="eye.slash.fill" catalog="system" symbolScale="medium"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C8t-o4-2Rt">
+                                        <rect key="frame" x="309" y="8" width="26" height="26"/>
+                                        <color key="tintColor" name="MainLabelColor"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="square.and.pencil.circle.fill" catalog="system" symbolScale="large"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="LabelBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ciw-vd-pXb" secondAttribute="trailing" constant="8" id="8RZ-T1-Mzg"/>
+                                    <constraint firstItem="ciw-vd-pXb" firstAttribute="top" secondItem="GCG-x8-pl4" secondAttribute="top" constant="40" id="Apr-zQ-Nb9"/>
+                                    <constraint firstAttribute="bottom" secondItem="ifM-vr-h7t" secondAttribute="bottom" constant="16" id="FST-km-vYf"/>
+                                    <constraint firstItem="ciw-vd-pXb" firstAttribute="leading" secondItem="ifM-vr-h7t" secondAttribute="trailing" constant="4" id="GgJ-Aw-kET"/>
+                                    <constraint firstItem="ifM-vr-h7t" firstAttribute="leading" secondItem="GCG-x8-pl4" secondAttribute="leading" constant="8" id="M54-R1-mms"/>
+                                    <constraint firstItem="C8t-o4-2Rt" firstAttribute="top" secondItem="GCG-x8-pl4" secondAttribute="top" constant="8" id="MD7-3x-fZF"/>
+                                    <constraint firstItem="ifM-vr-h7t" firstAttribute="top" secondItem="GCG-x8-pl4" secondAttribute="top" constant="16" id="Qsj-fO-kWy"/>
+                                    <constraint firstAttribute="trailing" secondItem="C8t-o4-2Rt" secondAttribute="trailing" constant="8" id="pXH-N6-K0H"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ciw-vd-pXb" secondAttribute="bottom" constant="8" id="vHg-iq-kfV"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07c-bZ-jTN">
+                                <rect key="frame" x="16" y="264" width="343" height="35"/>
+                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Log Out">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2wN-GH-dDH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GCG-x8-pl4" firstAttribute="top" secondItem="2wN-GH-dDH" secondAttribute="top" constant="8" id="Lx7-4u-lmF"/>
+                            <constraint firstItem="2wN-GH-dDH" firstAttribute="trailing" secondItem="07c-bZ-jTN" secondAttribute="trailing" constant="16" id="Umk-k8-1Nq"/>
+                            <constraint firstItem="07c-bZ-jTN" firstAttribute="top" secondItem="GCG-x8-pl4" secondAttribute="bottom" constant="8" id="bgt-cj-Ze3"/>
+                            <constraint firstItem="2wN-GH-dDH" firstAttribute="trailing" secondItem="GCG-x8-pl4" secondAttribute="trailing" constant="16" id="dN8-fA-Clb"/>
+                            <constraint firstItem="07c-bZ-jTN" firstAttribute="leading" secondItem="2wN-GH-dDH" secondAttribute="leading" constant="16" id="faV-yh-GmI"/>
+                            <constraint firstItem="GCG-x8-pl4" firstAttribute="leading" secondItem="2wN-GH-dDH" secondAttribute="leading" constant="16" id="lSs-Mp-gL4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="0nY-2d-zaz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a6e-1R-ly8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2540" y="769.56521739130437"/>
         </scene>
         <!--Job Details View Controller-->
         <scene sceneID="bCH-a2-uD4">
@@ -196,16 +296,10 @@
                                                         </constraints>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EME-ns-hAK">
-                                                        <rect key="frame" x="118" y="36" width="217" height="48"/>
+                                                        <rect key="frame" x="118" y="50" width="217" height="20"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soW-8W-ELq">
-                                                                <rect key="frame" x="0.0" y="0.0" width="217" height="20"/>
-                                                                <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="17"/>
-                                                                <color key="textColor" name="MainLabelColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is hiring a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVS-s3-exI">
-                                                                <rect key="frame" x="0.0" y="28" width="217" height="20"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="217" height="20"/>
                                                                 <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="17"/>
                                                                 <color key="textColor" name="MainLabelColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -581,8 +675,10 @@
     </scenes>
     <resources>
         <image name="bag" catalog="system" width="128" height="128"/>
+        <image name="eye.slash.fill" catalog="system" width="128" height="96"/>
         <image name="moon" catalog="system" width="128" height="123"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="square.and.pencil.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="CustomScreenColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -600,6 +696,9 @@
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
