@@ -82,6 +82,7 @@ final class LoginViewController: UIViewController {
         if let login = userNameTF.text, !login.isEmpty, let password = passwordTF.text, !password.isEmpty {
             let user = storageManager.findUser(withUsername: login)
             if user != nil, user?.password == password {
+                UserDefaults.standard.set(true, forKey: "isLoggedIn")
                 performSegue(withIdentifier: "ShowJobs", sender: user)
             } else {
                 showAlert(for: .simpleOK(title: "✘ User not found", message: "Check your Username and password"))

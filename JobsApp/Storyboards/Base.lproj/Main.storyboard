@@ -22,7 +22,7 @@
         <!--Jobs-->
         <scene sceneID="jta-s2-Sub">
             <objects>
-                <collectionViewController id="WOL-qF-wem" customClass="JobsViewController" customModule="JobsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="JobsViewController" id="WOL-qF-wem" customClass="JobsViewController" customModule="JobsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="zej-Jc-6py">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,7 +164,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="personButton" destination="Ge9-S6-vPE" id="97f-VX-dnV"/>
+                        <outlet property="personButton" destination="Ge9-S6-vPE" id="HGs-e5-0EM"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dlf-mV-4kx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -364,7 +364,7 @@
         <!--Login View Controller-->
         <scene sceneID="pRy-re-a72">
             <objects>
-                <viewController id="Fob-dj-suy" customClass="LoginViewController" customModule="JobsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="Fob-dj-suy" customClass="LoginViewController" customModule="JobsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ivl-fX-jcS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

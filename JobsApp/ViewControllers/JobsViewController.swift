@@ -24,7 +24,7 @@ protocol JobDetailsViewControllerDelegate: AnyObject {
 }
 
 final class JobsViewController: UICollectionViewController {
-
+    
     @IBOutlet var personButton: UIBarButtonItem!
     
     var user: User!
@@ -100,7 +100,6 @@ final class JobsViewController: UICollectionViewController {
         }
         for button in buttonItems {
             if button.tag == 0 {
-                Log.debug("Button tag is succeeded")
                 button.image = theme == .light
                 ? UIImage(systemName: "moon")
                 : UIImage(systemName: "moon.fill")
@@ -117,6 +116,7 @@ final class JobsViewController: UICollectionViewController {
             attributes: .destructive
         ) { [weak self] _ in
             guard let self else { return }
+//            UserDefaults.standard.set(false, forKey: "isLoggedIn")
             delegate?.logOut()
             dismiss(animated: true)
         }
