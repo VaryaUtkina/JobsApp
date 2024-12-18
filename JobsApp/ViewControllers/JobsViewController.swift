@@ -25,6 +25,8 @@ protocol JobDetailsViewControllerDelegate: AnyObject {
 
 final class JobsViewController: UICollectionViewController {
 
+    @IBOutlet var personButton: UIBarButtonItem!
+    
     var user: User!
     var theme: Theme! {
         didSet {
@@ -35,9 +37,13 @@ final class JobsViewController: UICollectionViewController {
     private let networkManager = NetworkManager.shared
     private let storageManager = StorageManager.shared
     private var jobs: [Job] = []
+    private var topMenu = UIMenu()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupTopMenu()
+        personButton.menu = topMenu
         
         updateCustomTheme(theme)
         fetchJobs()
@@ -99,6 +105,17 @@ final class JobsViewController: UICollectionViewController {
                 : UIImage(systemName: "moon.fill")
             }
         }
+    }
+    
+    private func setupTopMenu() {
+        let profile = UIAction(title: "Profile", image: UIImage(systemName: "person")) { _ in }
+        let logOut = UIAction(
+            title: "Log Out",
+            image: UIImage(systemName: "rectangle.portrait.and.arrow.right"),
+            attributes: .destructive
+        ) { _ in }
+        
+        topMenu = UIMenu(title: "Options", children: [profile, logOut])
     }
 }
 
