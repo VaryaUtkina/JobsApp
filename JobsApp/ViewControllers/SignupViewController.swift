@@ -16,6 +16,7 @@ final class SignupViewController: UIViewController {
     var theme: Theme!
     
     private let storageManager = StorageManager.shared
+    private let validation = ValidationService()
     private var userName = ""
     private var password = ""
     
@@ -42,18 +43,10 @@ final class SignupViewController: UIViewController {
         userNameTF.resignFirstResponder()
         passwordTF.resignFirstResponder()
         
-        guard let inputName = userNameTF.text, !inputName.isEmpty else {
-            showAlert(withStatus: .usernameIsEmpty) { [unowned self] in
-                userNameTF.becomeFirstResponder()
-            }
-            return
-        }
+        guard let inputName = userNameTF.text else { return }
         
-        if !isUsernameLengthValid(inputName) ||
-            !isUsernameContainsNoWhitespaces(inputName) ||
-            !isUsernamePatternValid(inputName) {
-            Log.error("Ошибка при проверке данных")
-            showAlert(withStatus: .invalidUsername) { [unowned self] in
+        if let usernameError = validation.validateUsername(inputName) {
+            showAlert(withStatus: usernameError) { [unowned self] in
                 userNameTF.becomeFirstResponder()
             }
             return
@@ -67,19 +60,10 @@ final class SignupViewController: UIViewController {
             return
         }
         
-        guard let inputPassword = passwordTF.text, !inputPassword.isEmpty else {
-            Log.error("Ошибка при проверке данных")
-            showAlert(withStatus: .passwordIsEmpty) { [unowned self] in
-                passwordTF.becomeFirstResponder()
-            }
-            return
-        }
+        guard let inputPassword = passwordTF.text else { return }
         
-        if !isPasswordLengthValid(inputPassword) ||
-            !isPasswordContainsNoWhitespaces(inputPassword) ||
-            !isPasswordPatternValid(inputPassword) {
-            Log.error("Ошибка при проверке данных")
-            showAlert(withStatus: .invalidPassword) { [unowned self] in
+        if let passwordError = validation.validatePassword(inputPassword) {
+            showAlert(withStatus: passwordError) { [unowned self] in
                 passwordTF.becomeFirstResponder()
             }
             return
@@ -132,43 +116,6 @@ final class SignupViewController: UIViewController {
     }
 }
 
-
-// MARK: - Username check
-private extension SignupViewController {
-    
-    func isUsernameLengthValid(_ username: String) -> Bool {
-        (4...20).contains(username.count)
-    }
-    
-    func isUsernameContainsNoWhitespaces(_ username: String) -> Bool {
-        username.rangeOfCharacter(from: .whitespaces) == nil
-    }
-    
-    func isUsernamePatternValid(_ username: String) -> Bool {
-        let regex = "^[a-zA-Z0-9._-]+$"
-        let predicate = NSPredicate(format:"SELF MATCHES %@", regex)
-        return predicate.evaluate(with: username)
-    }
-}
-
-// MARK: - Password check
-private extension SignupViewController {
-    func isPasswordLengthValid(_ password: String) -> Bool {
-        password.count >= 8
-    }
-    
-    func isPasswordContainsNoWhitespaces(_ password: String) -> Bool {
-        password.rangeOfCharacter(from: .whitespaces) == nil
-    }
-    
-    func isPasswordPatternValid(_ password: String) -> Bool {
-        let regex = "^[a-zA-Z0-9!#$%^&*\\-_=+./|]+$"
-            let predicate = NSPredicate(format:"SELF MATCHES %@", regex)
-            return predicate.evaluate(with: password)
-
-    }
-}
-
 // MARK: - UITextFieldDelegate
 extension SignupViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -184,9 +131,7 @@ extension SignupViewController: UITextFieldDelegate {
         guard textField == userNameTF else { return true }
         guard let inputText = textField.text as NSString? else { return true }
         let updatedText = inputText.replacingCharacters(in: range, with: string)
-        if !isUsernameLengthValid(updatedText) ||
-            !isUsernameContainsNoWhitespaces(updatedText) ||
-            !isUsernamePatternValid(updatedText) {
+        if let usernameError = validation.validateUsername(updatedText) {
             textField.layer.borderWidth = 1
             textField.layer.borderColor = UIColor.red.cgColor
         } else {
@@ -197,60 +142,3 @@ extension SignupViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: - InputTextStatus
-extension SignupViewController {
-    enum InputTextStatus {
-        case usernameIsEmpty
-        case passwordIsEmpty
-        case registrationError
-        case registrationSucceed
-        case invalidUsername
-        case invalidPassword
-        
-        var title: String {
-            switch self {
-            case .usernameIsEmpty: "Oops..."
-            case .passwordIsEmpty: "Oops..."
-            case .registrationError: "✘ Registration error"
-            case .registrationSucceed: "✔︎ Great!"
-            case .invalidUsername: "✘ Wrong format"
-            case .invalidPassword: "✘ Wrong format"
-            }
-        }
-        
-        var message: String {
-            switch self {
-            case .usernameIsEmpty:
-                "Please enter your username"
-            case .passwordIsEmpty:
-                "Please create a password"
-            case .registrationError:
-                "A user with this name already exists. Please choose a different name"
-            case .registrationSucceed:
-                "Your account has been created successfully"
-            case .invalidUsername:
-                """
-                    Please, use in your username only:
-                     - latin letters (A-Z, a-z)
-                     - numbers 0-9
-                     - special symbols ("_", "-", ".")
-                
-                    Minimum length of a username must be at least 4 characters, but not more than 20
-                    
-                    Don't use spaces in your username
-                """
-            case .invalidPassword:
-                """
-                    Please, use in your password only:
-                     - latin letters (A-Z, a-z)
-                     - numbers 0-9
-                     - special symbols ("!", "#", "$", "%", "^", "&", "*", "-", "_", "=", "+", ".", "/", "|")
-                
-                    Minimum length of a password must be at least 8 characters
-                    
-                    Don't use spaces in your password
-                """
-            }
-        }
-    }
-}
