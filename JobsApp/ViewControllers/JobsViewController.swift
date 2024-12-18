@@ -33,6 +33,7 @@ final class JobsViewController: UICollectionViewController {
             updateCustomTheme(theme)
         }
     }
+    weak var delegate: JobsViewControllerDelegate?
     
     private let networkManager = NetworkManager.shared
     private let storageManager = StorageManager.shared
@@ -109,11 +110,16 @@ final class JobsViewController: UICollectionViewController {
     
     private func setupTopMenu() {
         let profile = UIAction(title: "Profile", image: UIImage(systemName: "person")) { _ in }
+        
         let logOut = UIAction(
             title: "Log Out",
             image: UIImage(systemName: "rectangle.portrait.and.arrow.right"),
             attributes: .destructive
-        ) { _ in }
+        ) { [weak self] _ in
+            guard let self else { return }
+            delegate?.logOut()
+            dismiss(animated: true)
+        }
         
         topMenu = UIMenu(title: "Options", children: [profile, logOut])
     }

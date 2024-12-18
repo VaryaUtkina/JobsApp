@@ -131,7 +131,7 @@ extension SignupViewController: UITextFieldDelegate {
         guard textField == userNameTF else { return true }
         guard let inputText = textField.text as NSString? else { return true }
         let updatedText = inputText.replacingCharacters(in: range, with: string)
-        if let usernameError = validation.validateUsername(updatedText) {
+        if validation.validateUsername(updatedText) != nil {
             textField.layer.borderWidth = 1
             textField.layer.borderColor = UIColor.red.cgColor
         } else {

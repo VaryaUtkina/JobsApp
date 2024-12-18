@@ -11,6 +11,10 @@ protocol SignupViewControllerDelegate: AnyObject {
     func updateTF(_ text: String)
 }
 
+protocol JobsViewControllerDelegate: AnyObject {
+    func logOut()
+}
+
 final class LoginViewController: UIViewController {
     
     // MARK: - IB Outlets
@@ -66,6 +70,7 @@ final class LoginViewController: UIViewController {
             guard let jobsVC = navigationVC.topViewController as? JobsViewController else { return }
             jobsVC.user = sender as? User
             jobsVC.theme = theme
+            jobsVC.delegate = self
         }
     }
 
@@ -105,11 +110,6 @@ final class LoginViewController: UIViewController {
         sender.setImage(UIImage(systemName: imageName), for: .normal)
         isPrivate.toggle()
     }
-    
-//    private func updateTheme(_ theme: Theme) {
-//        overrideUserInterfaceStyle = theme.style
-//        navigationController?.overrideUserInterfaceStyle = theme.style
-//    }
 }
 
 // MARK: - UITextFieldDelegate
@@ -134,6 +134,14 @@ extension LoginViewController: UITextFieldDelegate {
 extension LoginViewController: SignupViewControllerDelegate {
     func updateTF(_ text: String) {
         userNameTF.text = text
+    }
+}
+
+// MARK: - JobsViewControllerDelegate
+extension LoginViewController: JobsViewControllerDelegate {
+    func logOut() {
+        userNameTF.text = ""
+        passwordTF.text = ""
     }
 }
 
