@@ -53,6 +53,11 @@ final class JobsViewController: UICollectionViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showProfile" {
+//            guard let profileVC = segue.destination as? ProfileViewController else { return }
+//            Log.debug("ProfileVC was opened") // helper, delete that
+//        }
+        
         if let indexPath = collectionView.indexPathsForSelectedItems?.first {
             guard let jobDetailsVC = segue.destination as? JobDetailsViewController else { return }
             jobDetailsVC.theme = theme
@@ -108,7 +113,10 @@ final class JobsViewController: UICollectionViewController {
     }
     
     private func setupTopMenu() {
-        let profile = UIAction(title: "Profile", image: UIImage(systemName: "person")) { _ in }
+        let profile = UIAction(title: "Profile", image: UIImage(systemName: "person")) { [weak self] _ in
+            guard let self else { return }
+            performSegue(withIdentifier: "showProfile", sender: user)
+        }
         
         let logOut = UIAction(
             title: "Log Out",

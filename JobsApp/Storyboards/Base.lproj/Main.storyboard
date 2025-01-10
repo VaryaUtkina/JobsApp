@@ -175,7 +175,7 @@
         <!--Profile-->
         <scene sceneID="nKR-Od-x2M">
             <objects>
-                <viewController id="TbT-pX-y2F" sceneMemberID="viewController">
+                <viewController id="TbT-pX-y2F" customClass="ProfileViewController" customModule="JobsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cwq-HB-ChX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -296,10 +296,16 @@
                                                         </constraints>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EME-ns-hAK">
-                                                        <rect key="frame" x="118" y="50" width="217" height="20"/>
+                                                        <rect key="frame" x="118" y="36" width="217" height="48"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is hiring a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVS-s3-exI">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3WM-Bx-oiB" userLabel="Company">
                                                                 <rect key="frame" x="0.0" y="0.0" width="217" height="20"/>
+                                                                <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="17"/>
+                                                                <color key="textColor" name="MainLabelColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="is hiring a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVS-s3-exI">
+                                                                <rect key="frame" x="0.0" y="28" width="217" height="20"/>
                                                                 <fontDescription key="fontDescription" name="DejaVuSans-Bold" family="DejaVu Sans" pointSize="17"/>
                                                                 <color key="textColor" name="MainLabelColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -441,7 +447,7 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="companyImage" destination="qI2-fF-gli" id="Yj7-CK-tQt"/>
-                        <outlet property="companyLabel" destination="soW-8W-ELq" id="tcT-2Q-2rc"/>
+                        <outlet property="companyLabel" destination="3WM-Bx-oiB" id="shs-5o-FkS"/>
                         <outlet property="companyView" destination="gWs-i0-mZL" id="Kor-SZ-VtA"/>
                         <outlet property="jobDescription" destination="oGF-Rg-bvP" id="saJ-XD-1dh"/>
                         <outlet property="jobFunctionLabel" destination="rCD-ta-TW8" id="f5b-ZX-OGX"/>
