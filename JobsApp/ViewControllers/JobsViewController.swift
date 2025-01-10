@@ -53,10 +53,11 @@ final class JobsViewController: UICollectionViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showProfile" {
-//            guard let profileVC = segue.destination as? ProfileViewController else { return }
-//            Log.debug("ProfileVC was opened") // helper, delete that
-//        }
+        if segue.identifier == "showProfile" {
+            guard let profileVC = segue.destination as? ProfileViewController else { return }
+            guard let user = sender as? User else { return }
+            profileVC.user = user
+        }
         
         if let indexPath = collectionView.indexPathsForSelectedItems?.first {
             guard let jobDetailsVC = segue.destination as? JobDetailsViewController else { return }
