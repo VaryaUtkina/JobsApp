@@ -16,7 +16,7 @@ final class SignupViewController: UIViewController {
     var theme: Theme!
     
     private let storageManager = StorageManager.shared
-    private let validation = ValidationService()
+    private let validation = ValidationService.shared
     private var userName = ""
     private var password = ""
     
@@ -52,7 +52,7 @@ final class SignupViewController: UIViewController {
             return
         }
         
-        if !checkUsername(inputName) {
+        if !validation.checkUsername(inputName) {
             Log.error("Ошибка при проверке данных")
             showAlert(withStatus: .registrationError) { [unowned self] in
                 userNameTF.becomeFirstResponder()
@@ -99,15 +99,6 @@ final class SignupViewController: UIViewController {
     }
     
     // MARK: - Methods with StorageManager
-    private func checkUsername(_ username: String) -> Bool {
-        let users = storageManager.fetchUsers()
-        
-        if users.contains(where: { $0.name == username }) {
-            return false
-        }
-        return true
-    }
-    
     private func register(user: User) {
         var users = storageManager.fetchUsers()
         

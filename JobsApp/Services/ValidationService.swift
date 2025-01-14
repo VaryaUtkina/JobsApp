@@ -64,6 +64,10 @@ enum InputTextStatus {
 
 final class ValidationService {
     
+    static let shared = ValidationService()
+    
+    private init() {}
+    
     func validateUsername(_ username: String) -> InputTextStatus? {
         if username.isEmpty {
             return .usernameIsEmpty
@@ -130,5 +134,14 @@ final class ValidationService {
         let predicate = NSPredicate(format:"SELF MATCHES %@", regex)
         return predicate.evaluate(with: password)
         
+    }
+    
+    func checkUsername(_ username: String) -> Bool {
+        let users = StorageManager.shared.fetchUsers()
+        
+        if users.contains(where: { $0.name == username }) {
+            return false
+        }
+        return true
     }
 }

@@ -53,6 +53,27 @@ final class StorageManager {
         Log.debug("Сохранены пользователи: \(users)")
     }
     
+    func edit(user: User, with newUser: User) {
+        delete(user: user)
+        
+        var users = fetchUsers()
+        users.append(newUser)
+        Log.debug("Новый массив после редактирования: \(users)")
+        save(users: users)
+    }
+    
+    func delete(user: User) {
+        var users = fetchUsers()
+        if let index = users.firstIndex(where: { $0.name == user.name }) {
+            Log.debug("Индекс для удаления: \(index)")
+            users.remove(at: index)
+            Log.debug("Массив после удаления: \(users)")
+            save(users: users)
+        } else {
+            Log.error("Пользователь не найден для удаления")
+        }
+    }
+    
     func findUser(withUsername userName: String) -> User? {
         let users = fetchUsers()
         if let user = users.filter({ $0.name == userName }).first {
