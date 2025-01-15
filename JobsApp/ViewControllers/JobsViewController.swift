@@ -49,7 +49,7 @@ final class JobsViewController: UICollectionViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showProfile" {
+        if segue.identifier == "ShowProfile" {
             guard let profileVC = segue.destination as? ProfileViewController else { return }
             guard let user = sender as? User else { return }
             profileVC.user = user
@@ -110,6 +110,7 @@ final class JobsViewController: UICollectionViewController {
         }
     }
     
+    // TODO: - do the same method for JobDetailsVC
     private func setupTopMenu() {
         let profile = UIAction(title: "Profile", image: UIImage(systemName: "person")) { [weak self] _ in
             guard let self else { return }

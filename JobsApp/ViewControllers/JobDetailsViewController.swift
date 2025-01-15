@@ -34,7 +34,6 @@ final class JobDetailsViewController: UIViewController {
     
     // MARK: - Private Properties
     private let networkManager = NetworkManager.shared
-    private let storageManager = StorageManager.shared
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {

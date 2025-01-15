@@ -97,9 +97,17 @@ final class ProfileViewController: UIViewController {
     
     private func updateCustomTheme(_ theme: Theme) {
         super.updateTheme(theme)
-        navigationItem.rightBarButtonItem?.image = theme == .light
-        ? UIImage(systemName: "moon")
-        : UIImage(systemName: "moon.fill")
+        guard let buttonItems = navigationItem.rightBarButtonItems else {
+            Log.error("No button item")
+            return
+        }
+        for button in buttonItems {
+            if button.tag == 0 {
+                button.image = theme == .light
+                ? UIImage(systemName: "moon")
+                : UIImage(systemName: "moon.fill")
+            }
+        }
     }
     
     private func editUser() {
