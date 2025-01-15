@@ -14,7 +14,6 @@ final class ProfileViewController: UIViewController {
     @IBOutlet var passwordLabel: UILabel!
     
     // TODO: - put moon button and setup theme
-    // TODO: - add delete button
     
     private var securityIsOn = true
     private let validation = ValidationService.shared
@@ -32,6 +31,35 @@ final class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
 
+    }
+
+    @IBAction func eyeAction(_ sender: UIButton) {
+        securityIsOn.toggle()
+        sender.setImage(
+            securityIsOn
+            ? UIImage(systemName: "eye.slash.fill")
+            : UIImage(systemName: "eye.fill"),
+            for: .normal
+        )
+        showPassword()
+    }
+    
+    @IBAction func editAction() {
+        editUser()
+    }
+
+    @IBAction func logoutAction() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let rootVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            window.rootViewController = UINavigationController(rootViewController: rootVC)
+            window.makeKeyAndVisible()
+        }
+    }
+    
+    @IBAction func deleteProfileAction() {
+        deleteProfile()
     }
     
     private func setupUI() {
@@ -56,34 +84,8 @@ final class ProfileViewController: UIViewController {
         profileView.layer.shadowColor = UIColor.black.cgColor
         profileView.layer.shadowOffset = CGSize(width: 0, height: 5)
     }
-
-    @IBAction func eyeAction(_ sender: UIButton) {
-        securityIsOn.toggle()
-        sender.setImage(
-            securityIsOn
-            ? UIImage(systemName: "eye.slash.fill")
-            : UIImage(systemName: "eye.fill"),
-            for: .normal
-        )
-        showPassword()
-    }
     
-    // TODO: - edit button
-    @IBAction func editAction() {
-        showAlert()
-    }
-
-    @IBAction func logoutAction() {
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let rootVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-            window.rootViewController = UINavigationController(rootViewController: rootVC)
-            window.makeKeyAndVisible()
-        }
-    }
-    
-    private func showAlert() {
+    private func editUser() {
         let alert = UIAlertController(
             title: "Edit section",
             message: "Please, enter new Username and password",
@@ -134,6 +136,33 @@ final class ProfileViewController: UIViewController {
         presentedAlertController = alert
     }
     
+    private func deleteProfile() {
+        let alert = UIAlertController(
+            title: "Are you sure?",
+            message: "You are going to delete your Profile",
+            preferredStyle: .alert
+        )
+        let okAction = UIAlertAction(title: "OK", style: .default) { [unowned self] _ in
+            storageManager.delete(user: user)
+            logoutAction()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
+    }
+    
+    private func updateButton() {
+        okButton?.isEnabled = isPasswordValid && isUsernameValid
+    }
+    
+    private func updateUI() {
+        usernameLabel.text = user.name
+        showPassword()
+    }
+    
     @objc private func usernameDidChange(_ textField: UITextField) {
         if let text = textField.text {
             if validation.validateUsername(text) != nil {
@@ -166,14 +195,5 @@ final class ProfileViewController: UIViewController {
             }
             updateButton()
         }
-    }
-    
-    private func updateButton() {
-        okButton?.isEnabled = isPasswordValid && isUsernameValid
-    }
-    
-    private func updateUI() {
-        usernameLabel.text = user.name
-        showPassword()
     }
 }

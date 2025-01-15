@@ -286,16 +286,32 @@
                                     <action selector="logoutAction" destination="TbT-pX-y2F" eventType="touchUpInside" id="ksz-2e-juO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGk-hx-Ewx">
+                                <rect key="frame" x="16" y="341" width="343" height="35"/>
+                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="titleShadowOffset" width="0.0" height="5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Delete Profile">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                    <color key="baseBackgroundColor" red="1" green="0.084650598812842204" blue="0.10619403249881443" alpha="0.2075069188191882" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="deleteProfileAction" destination="TbT-pX-y2F" eventType="touchUpInside" id="gDf-9b-b7f"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2wN-GH-dDH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="2wN-GH-dDH" firstAttribute="trailing" secondItem="pGk-hx-Ewx" secondAttribute="trailing" constant="16" id="9Yd-x7-nHV"/>
                             <constraint firstItem="GCG-x8-pl4" firstAttribute="top" secondItem="2wN-GH-dDH" secondAttribute="top" constant="8" id="Lx7-4u-lmF"/>
+                            <constraint firstItem="pGk-hx-Ewx" firstAttribute="top" secondItem="07c-bZ-jTN" secondAttribute="bottom" constant="18" id="S3i-FH-i9o"/>
                             <constraint firstItem="2wN-GH-dDH" firstAttribute="trailing" secondItem="07c-bZ-jTN" secondAttribute="trailing" constant="16" id="Umk-k8-1Nq"/>
                             <constraint firstItem="07c-bZ-jTN" firstAttribute="top" secondItem="GCG-x8-pl4" secondAttribute="bottom" constant="32" id="bgt-cj-Ze3"/>
                             <constraint firstItem="2wN-GH-dDH" firstAttribute="trailing" secondItem="GCG-x8-pl4" secondAttribute="trailing" constant="16" id="dN8-fA-Clb"/>
                             <constraint firstItem="07c-bZ-jTN" firstAttribute="leading" secondItem="2wN-GH-dDH" secondAttribute="leading" constant="16" id="faV-yh-GmI"/>
                             <constraint firstItem="GCG-x8-pl4" firstAttribute="leading" secondItem="2wN-GH-dDH" secondAttribute="leading" constant="16" id="lSs-Mp-gL4"/>
+                            <constraint firstItem="pGk-hx-Ewx" firstAttribute="leading" secondItem="2wN-GH-dDH" secondAttribute="leading" constant="16" id="wlb-J9-hQs"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="0nY-2d-zaz"/>
