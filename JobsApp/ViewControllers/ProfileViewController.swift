@@ -97,7 +97,7 @@ final class ProfileViewController: UIViewController {
             textField.addTarget(
                 self,
                 action: #selector(usernameDidChange(_:)),
-                for: .editingChanged
+                for: .allEvents
             )
         }
         
@@ -117,6 +117,8 @@ final class ProfileViewController: UIViewController {
                let password = alert.textFields?.last?.text {
                 let editedUser = User(name: name, password: password)
                 storageManager.edit(user: user, with: editedUser)
+                user = editedUser
+                updateUI()
             }
         }
         
@@ -168,5 +170,10 @@ final class ProfileViewController: UIViewController {
     
     private func updateButton() {
         okButton?.isEnabled = isPasswordValid && isUsernameValid
+    }
+    
+    private func updateUI() {
+        usernameLabel.text = user.name
+        showPassword()
     }
 }
