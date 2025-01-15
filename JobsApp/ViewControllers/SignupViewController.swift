@@ -22,6 +22,7 @@ final class SignupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = .labelGrey
         
         userNameTF.delegate = self
         passwordTF.delegate = self

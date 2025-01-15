@@ -314,7 +314,11 @@
                             <constraint firstItem="pGk-hx-Ewx" firstAttribute="leading" secondItem="2wN-GH-dDH" secondAttribute="leading" constant="16" id="wlb-J9-hQs"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="0nY-2d-zaz"/>
+                    <navigationItem key="navigationItem" title="Profile" id="0nY-2d-zaz">
+                        <barButtonItem key="rightBarButtonItem" image="moon" catalog="system" id="F0K-wD-8NF">
+                            <color key="tintColor" name="LabelGreyColor"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="passwordLabel" destination="soW-8W-ELq" id="zQa-v2-W6a"/>
                         <outlet property="profileView" destination="GCG-x8-pl4" id="UrT-k2-mxN"/>

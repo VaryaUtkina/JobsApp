@@ -30,7 +30,6 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-
     }
 
     @IBAction func eyeAction(_ sender: UIButton) {
@@ -64,8 +63,8 @@ final class ProfileViewController: UIViewController {
     
     private func setupUI() {
         setupView()
-        usernameLabel.text = user.name
-        showPassword()
+        updateUI()
+        navigationController?.navigationBar.tintColor = .labelGrey
     }
     
     private func showPassword() {

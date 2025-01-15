@@ -61,6 +61,8 @@ final class JobDetailsViewController: UIViewController {
 extension JobDetailsViewController {
     private func setupUI() {
         setupView()
+        navigationController?.navigationBar.tintColor = .labelGrey
+        
         companyLabel.text = job.companyName
         
         positionLabel.text = job.jobTitle
