@@ -12,4 +12,13 @@ extension UIViewController {
         overrideUserInterfaceStyle = theme.style
         navigationController?.overrideUserInterfaceStyle = theme.style
     }
+    
+    func changeTheme(_ theme: Theme, withDelegate delegate: ThemeDelegate?) -> Theme {
+        var changedTheme: Theme
+        changedTheme = (theme == .light) ? .dark : .light
+        
+        StorageManager.shared.save(theme: changedTheme)
+        delegate?.reloadTheme(changedTheme)
+        return changedTheme
+    }
 }

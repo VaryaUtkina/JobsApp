@@ -30,7 +30,7 @@ final class JobDetailsViewController: UIViewController {
             updateCustomTheme(theme)
         }
     }
-    weak var delegate: JobDetailsViewControllerDelegate?
+    weak var delegate: ThemeDelegate?
     
     // MARK: - Private Properties
     private let networkManager = NetworkManager.shared
@@ -43,10 +43,7 @@ final class JobDetailsViewController: UIViewController {
         updateCustomTheme(theme)
     }
     @IBAction func moonButtonAction(_ sender: UIBarButtonItem) {
-        theme = (theme == .light) ? .dark : .light
-        
-        storageManager.save(theme: theme)
-        delegate?.reloadTheme(theme)
+        theme = super.changeTheme(theme, withDelegate: delegate)
     }
     
     private func updateCustomTheme(_ theme: Theme) {

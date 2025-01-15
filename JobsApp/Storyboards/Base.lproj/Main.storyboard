@@ -317,6 +317,9 @@
                     <navigationItem key="navigationItem" title="Profile" id="0nY-2d-zaz">
                         <barButtonItem key="rightBarButtonItem" image="moon" catalog="system" id="F0K-wD-8NF">
                             <color key="tintColor" name="LabelGreyColor"/>
+                            <connections>
+                                <action selector="moonButtonAction:" destination="TbT-pX-y2F" id="2SN-es-b4b"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

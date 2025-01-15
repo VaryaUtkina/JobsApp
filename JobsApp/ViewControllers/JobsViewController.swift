@@ -19,10 +19,6 @@ enum Theme: Codable {
     }
 }
 
-protocol JobDetailsViewControllerDelegate: AnyObject {
-    func reloadTheme(_ theme: Theme)
-}
-
 final class JobsViewController: UICollectionViewController {
     
     @IBOutlet var personButton: UIBarButtonItem!
@@ -57,6 +53,8 @@ final class JobsViewController: UICollectionViewController {
             guard let profileVC = segue.destination as? ProfileViewController else { return }
             guard let user = sender as? User else { return }
             profileVC.user = user
+            profileVC.theme = theme
+            profileVC.delegate = self
         }
         
         if let indexPath = collectionView.indexPathsForSelectedItems?.first {
@@ -82,7 +80,6 @@ final class JobsViewController: UICollectionViewController {
 
     @IBAction func moonButtonAction(_ sender: UIBarButtonItem) {
         theme = (theme == .light) ? .dark : .light
-        
         storageManager.save(theme: theme)
     }
     
@@ -161,7 +158,7 @@ extension JobsViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - JobDetailsViewControllerDelegate
-extension JobsViewController: JobDetailsViewControllerDelegate {
+extension JobsViewController: ThemeDelegate {
     func reloadTheme(_ theme: Theme) {
         self.theme = theme
         updateCustomTheme(theme)

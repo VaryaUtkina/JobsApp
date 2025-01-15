@@ -14,6 +14,13 @@ final class ProfileViewController: UIViewController {
     @IBOutlet var passwordLabel: UILabel!
     
     // TODO: - put moon button and setup theme
+    var user: User!
+    var theme: Theme! {
+        didSet {
+            updateCustomTheme(theme)
+        }
+    }
+    weak var delegate: ThemeDelegate?
     
     private var securityIsOn = true
     private let validation = ValidationService.shared
@@ -25,13 +32,17 @@ final class ProfileViewController: UIViewController {
     private var isUsernameValid = false
     private var isPasswordValid = false
     
-    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        updateCustomTheme(theme)
     }
 
+    @IBAction func moonButtonAction(_ sender: UIBarButtonItem) {
+        theme = super.changeTheme(theme, withDelegate: delegate)
+    }
+    
     @IBAction func eyeAction(_ sender: UIButton) {
         securityIsOn.toggle()
         sender.setImage(
@@ -67,13 +78,6 @@ final class ProfileViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .labelGrey
     }
     
-    private func showPassword() {
-        let originalText = user.password
-        passwordLabel.text = securityIsOn
-        ? String(repeating: "•", count: originalText.count)
-        : originalText
-    }
-    
     private func setupView() {
         profileView.backgroundColor = .customView
         profileView.layer.cornerRadius = 20
@@ -82,6 +86,20 @@ final class ProfileViewController: UIViewController {
         profileView.layer.shadowOpacity = 0.6
         profileView.layer.shadowColor = UIColor.black.cgColor
         profileView.layer.shadowOffset = CGSize(width: 0, height: 5)
+    }
+    
+    private func showPassword() {
+        let originalText = user.password
+        passwordLabel.text = securityIsOn
+        ? String(repeating: "•", count: originalText.count)
+        : originalText
+    }
+    
+    private func updateCustomTheme(_ theme: Theme) {
+        super.updateTheme(theme)
+        navigationItem.rightBarButtonItem?.image = theme == .light
+        ? UIImage(systemName: "moon")
+        : UIImage(systemName: "moon.fill")
     }
     
     private func editUser() {
