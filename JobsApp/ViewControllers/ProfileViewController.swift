@@ -9,11 +9,12 @@ import UIKit
 
 final class ProfileViewController: UIViewController {
 
+    // MARK: - IB Outlets
     @IBOutlet var profileView: UIView!
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var passwordLabel: UILabel!
     
-    // TODO: - put moon button and setup theme
+    // MARK: - Public Properties
     var user: User!
     var theme: Theme! {
         didSet {
@@ -21,7 +22,9 @@ final class ProfileViewController: UIViewController {
         }
     }
     weak var delegate: ThemeDelegate?
+    weak var updateDelegate: UserUpdateDelegate?
     
+    // MARK: - Private Properties
     private var securityIsOn = true
     private let validation = ValidationService.shared
     private let storageManager = StorageManager.shared
@@ -32,11 +35,16 @@ final class ProfileViewController: UIViewController {
     private var isUsernameValid = false
     private var isPasswordValid = false
     
-    
+    // MARK: - View Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         updateCustomTheme(theme)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        updateDelegate?.update(user: user)
     }
 
     @IBAction func moonButtonAction(_ sender: UIBarButtonItem) {
@@ -222,3 +230,21 @@ final class ProfileViewController: UIViewController {
         }
     }
 }
+
+
+
+
+
+
+
+// MARK: - Initializers
+
+
+
+
+
+// MARK: - IB Actions
+
+// MARK: - Public Methods
+
+// MARK: - Private Methods

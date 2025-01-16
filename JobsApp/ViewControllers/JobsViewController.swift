@@ -7,35 +7,27 @@
 
 import UIKit
 
-enum Theme: Codable {
-    case light
-    case dark
-    
-    var style: UIUserInterfaceStyle {
-        switch self {
-        case .light: .light
-        case .dark: .dark
-        }
-    }
-}
-
 final class JobsViewController: UICollectionViewController {
     
+    // MARK: - IB Outlets
     @IBOutlet var personButton: UIBarButtonItem!
     
+    // MARK: - Public Properties
     var user: User!
     var theme: Theme! {
         didSet {
             updateCustomTheme(theme)
         }
     }
-    weak var delegate: JobsViewControllerDelegate?
+    weak var logoutDelegate: ProfileLogoutDelegate?
     
+    // MARK: - Private Properties
     private let networkManager = NetworkManager.shared
     private let storageManager = StorageManager.shared
     private var jobs: [Job] = []
     private var topMenu = UIMenu()
     
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +40,7 @@ final class JobsViewController: UICollectionViewController {
         navigationController?.navigationBar.tintColor = .mainLabel
     }
     
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowProfile" {
             guard let profileVC = segue.destination as? ProfileViewController else { return }
@@ -55,13 +48,17 @@ final class JobsViewController: UICollectionViewController {
             profileVC.user = user
             profileVC.theme = theme
             profileVC.delegate = self
+            profileVC.updateDelegate = self
         }
         
         if let indexPath = collectionView.indexPathsForSelectedItems?.first {
             guard let jobDetailsVC = segue.destination as? JobDetailsViewController else { return }
             jobDetailsVC.theme = theme
             jobDetailsVC.job = jobs[indexPath.row]
+            jobDetailsVC.user = user
             jobDetailsVC.delegate = self
+            jobDetailsVC.updateDelegate = self
+            jobDetailsVC.logoutDelegate = self.logoutDelegate
         }
     }
     
@@ -78,11 +75,13 @@ final class JobsViewController: UICollectionViewController {
         return cell
     }
 
+    // MARK: - IB Actions
     @IBAction func moonButtonAction(_ sender: UIBarButtonItem) {
         theme = (theme == .light) ? .dark : .light
         storageManager.save(theme: theme)
     }
     
+    // MARK: - Private Methods
     private func fetchJobs() {
         networkManager.fetchJobs(from: Link.jobsUrl.url) { [unowned self] result in
             switch result {
@@ -110,11 +109,10 @@ final class JobsViewController: UICollectionViewController {
         }
     }
     
-    // TODO: - do the same method for JobDetailsVC
     private func setupTopMenu() {
         let profile = UIAction(title: "Profile", image: UIImage(systemName: "person")) { [weak self] _ in
             guard let self else { return }
-            performSegue(withIdentifier: "showProfile", sender: user)
+            performSegue(withIdentifier: "ShowProfile", sender: user)
         }
         
         let logOut = UIAction(
@@ -124,7 +122,7 @@ final class JobsViewController: UICollectionViewController {
         ) { [weak self] _ in
             guard let self else { return }
 //            UserDefaults.standard.set(false, forKey: "isLoggedIn")
-            delegate?.logOut()
+            logoutDelegate?.logOut()
             dismiss(animated: true)
         }
         
@@ -158,10 +156,17 @@ extension JobsViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - JobDetailsViewControllerDelegate
+// MARK: - ThemeDelegate
 extension JobsViewController: ThemeDelegate {
     func reloadTheme(_ theme: Theme) {
         self.theme = theme
         updateCustomTheme(theme)
+    }
+}
+
+// MARK: - UserUpdateDelegate
+extension JobsViewController: UserUpdateDelegate {
+    func update(user: User) {
+        self.user = user
     }
 }

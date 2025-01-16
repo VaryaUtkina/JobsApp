@@ -11,10 +11,6 @@ protocol SignupViewControllerDelegate: AnyObject {
     func updateTF(_ text: String)
 }
 
-protocol JobsViewControllerDelegate: AnyObject {
-    func logOut()
-}
-
 final class LoginViewController: UIViewController {
     
     // MARK: - IB Outlets
@@ -70,7 +66,7 @@ final class LoginViewController: UIViewController {
             guard let jobsVC = navigationVC.topViewController as? JobsViewController else { return }
             jobsVC.user = sender as? User
             jobsVC.theme = theme
-            jobsVC.delegate = self
+            jobsVC.logoutDelegate = self
         }
     }
 
@@ -138,8 +134,8 @@ extension LoginViewController: SignupViewControllerDelegate {
     }
 }
 
-// MARK: - JobsViewControllerDelegate
-extension LoginViewController: JobsViewControllerDelegate {
+// MARK: - ProfileLogoutDelegate
+extension LoginViewController: ProfileLogoutDelegate {
     func logOut() {
         userNameTF.text = ""
         passwordTF.text = ""

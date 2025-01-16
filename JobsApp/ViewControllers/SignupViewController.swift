@@ -9,17 +9,21 @@ import UIKit
 
 final class SignupViewController: UIViewController {
 
+    // MARK: - IB Outlets
     @IBOutlet var userNameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
+    // MARK: - Public Properties
     var delegate: SignupViewControllerDelegate?
     var theme: Theme!
     
+    // MARK: - Private Properties
     private let storageManager = StorageManager.shared
     private let validation = ValidationService.shared
     private var userName = ""
     private var password = ""
     
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.tintColor = .labelGrey
@@ -35,11 +39,13 @@ final class SignupViewController: UIViewController {
         userNameTF.becomeFirstResponder()
     }
     
+    // MARK: - Override Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
     
+    // MARK: - IB Actions
     @IBAction func signupButtonPressed() {
         userNameTF.resignFirstResponder()
         passwordTF.resignFirstResponder()

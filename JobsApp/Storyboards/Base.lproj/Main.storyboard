@@ -140,7 +140,7 @@
                                     <outlet property="jobTitleLabel" destination="EUT-OJ-jPW" id="LS6-p6-ye4"/>
                                     <outlet property="rangeSalaryLabel" destination="9Rf-Ga-V3S" id="cPP-PG-YIg"/>
                                     <outlet property="remoteLabel" destination="ond-2h-v1X" id="lOf-jx-pDy"/>
-                                    <segue destination="8Ju-EO-G5D" kind="show" id="qIy-K4-b9F"/>
+                                    <segue destination="8Ju-EO-G5D" kind="show" identifier="ShowJobs" id="qIy-K4-b9F"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -181,7 +181,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GCG-x8-pl4">
-                                <rect key="frame" x="16" y="52" width="343" height="152"/>
+                                <rect key="frame" x="16" y="104" width="343" height="152"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ifM-vr-h7t">
                                         <rect key="frame" x="8" y="17.5" width="120" height="117"/>
@@ -275,7 +275,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07c-bZ-jTN">
-                                <rect key="frame" x="16" y="236" width="343" height="35"/>
+                                <rect key="frame" x="16" y="288" width="343" height="35"/>
                                 <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="titleShadowOffset" width="0.0" height="5"/>
                                 <state key="normal" title="Button"/>
@@ -287,7 +287,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGk-hx-Ewx">
-                                <rect key="frame" x="16" y="289" width="343" height="35"/>
+                                <rect key="frame" x="16" y="341" width="343" height="35"/>
                                 <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="titleShadowOffset" width="0.0" height="5"/>
                                 <state key="normal" title="Button"/>
@@ -519,6 +519,7 @@
                         <outlet property="jobFunctionLabel" destination="rCD-ta-TW8" id="f5b-ZX-OGX"/>
                         <outlet property="jobGeoLabel" destination="Xpb-A6-Cag" id="kOg-ZD-g4c"/>
                         <outlet property="jobTypeLabel" destination="plz-w4-Etj" id="EIc-dp-GMu"/>
+                        <outlet property="personButton" destination="VGn-Ur-IIJ" id="wXl-jj-J4M"/>
                         <outlet property="positionLabel" destination="sWv-Q1-6OG" id="Qc1-9U-vNL"/>
                         <outlet property="salaryLabel" destination="wZc-Em-991" id="WiG-70-djV"/>
                         <segue destination="TbT-pX-y2F" kind="show" identifier="ShowProfileFromDetails" id="JxA-l1-eGb"/>
@@ -747,7 +748,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JxA-l1-eGb"/>
+        <segue reference="iqZ-tB-Jog"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bag" catalog="system" width="128" height="128"/>
