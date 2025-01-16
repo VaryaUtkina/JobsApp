@@ -64,7 +64,9 @@ final class LoginViewController: UIViewController {
         }
         if let navigationVC = segue.destination as? UINavigationController {
             guard let jobsVC = navigationVC.topViewController as? JobsViewController else { return }
-            jobsVC.user = sender as? User
+            guard let user = sender as? User else { return }
+            storageManager.loginUser(user)
+            jobsVC.user = user
             jobsVC.theme = theme
             jobsVC.logoutDelegate = self
         }
@@ -78,7 +80,6 @@ final class LoginViewController: UIViewController {
         if let login = userNameTF.text, !login.isEmpty, let password = passwordTF.text, !password.isEmpty {
             let user = storageManager.findUser(withUsername: login)
             if user != nil, user?.password == password {
-                UserDefaults.standard.set(true, forKey: "isLoggedIn")
                 performSegue(withIdentifier: "ShowJobs", sender: user)
             } else {
                 showAlert(for: .simpleOK(title: "✘ User not found", message: "Check your Username and password"))

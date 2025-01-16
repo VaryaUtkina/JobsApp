@@ -10,32 +10,38 @@ import UIKit
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private let storageManager = StorageManager.shared
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
         
-//        let window = UIWindow(windowScene: windowScene)
-//        self.window = window
-
-//        let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
-//        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let identifier = isLoggedIn ? "JobsViewController" : "LoginViewController"
-//        
-//        let rootViewController = storyboard.instantiateViewController(withIdentifier: identifier)
-//        let navigationController = UINavigationController(rootViewController: rootViewController)
-//        
-//        window.rootViewController = navigationController
-//        window.makeKeyAndVisible()
+        let window = UIWindow(windowScene: windowScene)
+        self.window = window
+        
+        let isUserLoggedIn = storageManager.isUserLoggedIn()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if isUserLoggedIn {
+            guard let user = storageManager.fetchUser() else {
+                Log.error("Пользователь не найден")
+                return
+            }
+            if let jobsVC = storyboard.instantiateViewController(withIdentifier: "JobsViewController") as? JobsViewController {
+                jobsVC.user = user
+                jobsVC.theme = storageManager.fetchTheme()
+                // TODO: - Look at JobsVC: logoutDelegate. How to fix?
+                
+                window.rootViewController = UINavigationController(rootViewController: jobsVC)
+            }
+        } else {
+            let rootViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            window.rootViewController = UINavigationController(rootViewController: rootViewController)
+        }
+        
+        window.makeKeyAndVisible()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
     }
-    
-//    func sceneWillEnterForeground(_ scene: UIScene) {
-//        guard let window = window else { return }
-//        window.makeKeyAndVisible()
-//    }
-
 }
 

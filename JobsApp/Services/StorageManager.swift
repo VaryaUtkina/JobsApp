@@ -11,11 +11,15 @@ final class StorageManager {
     static let shared = StorageManager()
     
     private let userDefaults = UserDefaults.standard
+    
     private let themeKey = "theme"
-    private let userKey = "users"
+    private let usersKey = "users"
+    private let loginKey = "isUserLoggedIn"
+    private let profileKey = "profile"
     
     private init() {}
     
+    // MARK: - Theme
     func fetchTheme() -> Theme {
         guard let data = userDefaults.data(forKey: themeKey) else {
             Log.debug("Данные для 'themeKey' не найдены. Используется тема по умолчанию: .light")
@@ -35,8 +39,9 @@ final class StorageManager {
         userDefaults.set(data, forKey: themeKey)
     }
     
+    // MARK: - Users
     func fetchUsers() -> [User] {
-        guard let data = userDefaults.data(forKey: userKey) else { return [] }
+        guard let data = userDefaults.data(forKey: usersKey) else { return [] }
         guard let users = try? JSONDecoder().decode([User].self, from: data) else {
             Log.error("Ошибка декодирования списка пользователей")
             return []
@@ -49,7 +54,7 @@ final class StorageManager {
             Log.error("Ошибка кодирования списка пользователей для сохранения")
             return
         }
-        userDefaults.set(data, forKey: userKey)
+        userDefaults.set(data, forKey: usersKey)
         Log.debug("Сохранены пользователи: \(users)")
     }
     
@@ -80,5 +85,43 @@ final class StorageManager {
             return user
         }
         return nil
+    }
+    
+    // MARK: - Login
+    func loginUser(_ user: User) {
+        userDefaults.set(true, forKey: loginKey)
+        save(user: user)
+    }
+    
+    func logoutUser() {
+        userDefaults.set(false, forKey: loginKey)
+        deleteUserWhenLogOut()
+    }
+    
+    func isUserLoggedIn() -> Bool {
+        userDefaults.bool(forKey: loginKey)
+    }
+    
+    // MARK: - User
+    func fetchUser() -> User? {
+        guard let data = userDefaults.data(forKey: profileKey) else { return nil }
+        guard let user = try? JSONDecoder().decode(User.self, from: data) else {
+            Log.error("Ошибка декодирования пользователя")
+            return nil
+        }
+        return user
+    }
+    
+    private func save(user: User) {
+        guard let data = try? JSONEncoder().encode(user) else {
+            Log.error("Ошибка кодирования пользователя для сохранения")
+            return
+        }
+        userDefaults.set(data, forKey: profileKey)
+        Log.debug("Сохранен пользователь: \(user)")
+    }
+    
+    private func deleteUserWhenLogOut() {
+        userDefaults.removeObject(forKey: profileKey)
     }
 }

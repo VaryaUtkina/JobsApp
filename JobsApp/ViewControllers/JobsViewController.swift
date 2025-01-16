@@ -19,6 +19,7 @@ final class JobsViewController: UICollectionViewController {
             updateCustomTheme(theme)
         }
     }
+    
     weak var logoutDelegate: ProfileLogoutDelegate?
     
     // MARK: - Private Properties
@@ -121,7 +122,7 @@ final class JobsViewController: UICollectionViewController {
             attributes: .destructive
         ) { [weak self] _ in
             guard let self else { return }
-//            UserDefaults.standard.set(false, forKey: "isLoggedIn")
+            storageManager.logoutUser()
             logoutDelegate?.logOut()
             dismiss(animated: true)
         }

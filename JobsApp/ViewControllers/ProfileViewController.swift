@@ -67,6 +67,7 @@ final class ProfileViewController: UIViewController {
     }
 
     @IBAction func logoutAction() {
+        storageManager.logoutUser()
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

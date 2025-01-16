@@ -39,6 +39,7 @@ final class JobDetailsViewController: UIViewController {
     
     // MARK: - Private Properties
     private let networkManager = NetworkManager.shared
+    private let storageManager = StorageManager.shared
     private var topMenu = UIMenu()
     
     // MARK: - View Life Cycle
@@ -143,6 +144,7 @@ private extension JobDetailsViewController {
             attributes: .destructive
         ) { [weak self] _ in
             guard let self else { return }
+            storageManager.logoutUser()
             logoutDelegate?.logOut()
             dismiss(animated: true)
         }
