@@ -22,7 +22,6 @@ final class StorageManager {
     // MARK: - Theme
     func fetchTheme() -> Theme {
         guard let data = userDefaults.data(forKey: themeKey) else {
-            Log.debug("Данные для 'themeKey' не найдены. Используется тема по умолчанию: .light")
             return .light
         }
         guard let theme = try? JSONDecoder().decode(Theme.self, from: data) else {
@@ -55,7 +54,6 @@ final class StorageManager {
             return
         }
         userDefaults.set(data, forKey: usersKey)
-        Log.debug("Сохранены пользователи: \(users)")
     }
     
     func edit(user: User, with newUser: User) {
@@ -63,16 +61,13 @@ final class StorageManager {
         
         var users = fetchUsers()
         users.append(newUser)
-        Log.debug("Новый массив после редактирования: \(users)")
         save(users: users)
     }
     
     func delete(user: User) {
         var users = fetchUsers()
         if let index = users.firstIndex(where: { $0.name == user.name }) {
-            Log.debug("Индекс для удаления: \(index)")
             users.remove(at: index)
-            Log.debug("Массив после удаления: \(users)")
             save(users: users)
         } else {
             Log.error("Пользователь не найден для удаления")
@@ -118,7 +113,6 @@ final class StorageManager {
             return
         }
         userDefaults.set(data, forKey: profileKey)
-        Log.debug("Сохранен пользователь: \(user)")
     }
     
     private func deleteUserWhenLogOut() {

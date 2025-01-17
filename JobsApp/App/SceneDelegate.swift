@@ -29,7 +29,9 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if let jobsVC = storyboard.instantiateViewController(withIdentifier: "JobsViewController") as? JobsViewController {
                 jobsVC.user = user
                 jobsVC.theme = storageManager.fetchTheme()
-                // TODO: - Look at JobsVC: logoutDelegate. How to fix?
+                
+                let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+                jobsVC.logoutDelegate = loginVC
                 
                 window.rootViewController = UINavigationController(rootViewController: jobsVC)
             }

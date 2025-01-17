@@ -178,6 +178,7 @@ final class ProfileViewController: UIViewController {
         )
         let okAction = UIAlertAction(title: "OK", style: .default) { [unowned self] _ in
             storageManager.delete(user: user)
+            storageManager.logoutUser()
             logoutAction()
         }
         

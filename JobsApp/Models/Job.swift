@@ -21,13 +21,13 @@ struct Job: Decodable {
     let jobExcerpt: String
     let jobDescription: String
     let pubDate: String
-    let annualSalaryMin: String?
-    let annualSalaryMax: String?
+    let annualSalaryMin: Int?
+    let annualSalaryMax: Int?
     let salaryCurrency: String?
     
     var salaryRange: String {
         if let annualSalaryMin, let annualSalaryMax {
-            return "\(formatNumberString(annualSalaryMin)) - \(formatNumberString(annualSalaryMax))"
+            return "\(formatNumber(annualSalaryMin)) - \(formatNumber(annualSalaryMax))"
         }
         return "not specified"
     }
@@ -36,14 +36,12 @@ struct Job: Decodable {
         "\(flagEmoji(forCountryCode: jobGeo)) \(jobGeo)"
     }
     
-    private func formatNumberString(_ numberString: String) -> String {
-        guard let salary = Int(numberString) else {
-            return numberString
-        }
+    private func formatNumber(_ number: Int) -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.locale = Locale(identifier: "en_US")
-        return numberFormatter.string(from: NSNumber(value: salary)) ?? numberString
+        
+        return numberFormatter.string(from: NSNumber(value: number)) ?? number.formatted()
     }
     
     private func flagEmoji(forCountryCode countryCode: String) -> Character {
