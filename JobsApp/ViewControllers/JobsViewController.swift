@@ -122,9 +122,10 @@ final class JobsViewController: UICollectionViewController {
             attributes: .destructive
         ) { [weak self] _ in
             guard let self else { return }
+            // MARK: - Не работает выход с экрана
             storageManager.logoutUser()
             logoutDelegate?.logOut()
-            dismiss(animated: true)
+            navigationController?.popToRootViewController(animated: true)
         }
         
         topMenu = UIMenu(title: "Options", children: [profile, logOut])

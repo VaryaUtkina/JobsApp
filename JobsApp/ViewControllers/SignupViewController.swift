@@ -18,6 +18,8 @@ final class SignupViewController: UIViewController {
     var theme: Theme!
     
     // MARK: - Private Properties
+    private let presenter = SignupPresenter()
+    
     private let storageManager = StorageManager.shared
     private let validation = ValidationService.shared
     private var userName = ""
@@ -32,6 +34,7 @@ final class SignupViewController: UIViewController {
         passwordTF.delegate = self
         
         updateTheme(theme)
+        presenter.setViewDelegate(delegate: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,15 +56,14 @@ final class SignupViewController: UIViewController {
         guard let inputName = userNameTF.text else { return }
         
         if let usernameError = validation.validateUsername(inputName) {
-            showAlert(withStatus: usernameError) { [unowned self] in
+            presenter.showAlert(withStatus: usernameError) { [unowned self] in
                 userNameTF.becomeFirstResponder()
             }
             return
         }
         
         if !validation.checkUsername(inputName) {
-            Log.error("Ошибка при проверке данных")
-            showAlert(withStatus: .registrationError) { [unowned self] in
+            presenter.showAlert(withStatus: .registrationError) { [unowned self] in
                 userNameTF.becomeFirstResponder()
             }
             return
@@ -70,47 +72,23 @@ final class SignupViewController: UIViewController {
         guard let inputPassword = passwordTF.text else { return }
         
         if let passwordError = validation.validatePassword(inputPassword) {
-            showAlert(withStatus: passwordError) { [unowned self] in
+            presenter.showAlert(withStatus: passwordError) { [unowned self] in
                 passwordTF.becomeFirstResponder()
             }
             return
         }
         
         let user = User(name: inputName, password: inputPassword)
+        presenter.register(user: user)
         
-        Log.debug("Пользователь регистрируется: \(user)")
-        register(user: user)
         delegate?.updateTF(user.name)
-        showAlert(withStatus: .registrationSucceed)
+        presenter.showAlert(withStatus: .registrationSucceed)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [unowned self] in
             view.endEditing(true)
             dismiss(animated: true)
             navigationController?.popViewController(animated: true)
         }
-    }
-    
-    // MARK: - UIAlertController
-    private func showAlert(withStatus status: InputTextStatus, completion: (() -> Void)? = nil) {
-        let alert = UIAlertController(
-            title: status.title,
-            message: status.message,
-            preferredStyle: .alert
-        )
-        if status != .registrationSucceed {
-            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-                completion?()
-            }
-            alert.addAction(okAction)
-        }
-        present(alert, animated: true)
-    }
-    
-    // MARK: - Methods with StorageManager
-    private func register(user: User) {
-        var users = storageManager.fetchUsers()
-        
-        users.append(user)
-        storageManager.save(users: users)
     }
 }
 
@@ -137,6 +115,20 @@ extension SignupViewController: UITextFieldDelegate {
             textField.layer.borderColor = nil
         }
         return true
+    }
+}
+
+
+extension SignupViewController: SignupPresenterDelegate {
+    func presentAlert(title: String, message: String, isRegistrationSucceed: Bool, completion: (() -> Void)?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        if !isRegistrationSucceed {
+            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                completion?()
+            }
+            alert.addAction(okAction)
+        }
+        present(alert, animated: true)
     }
 }
 

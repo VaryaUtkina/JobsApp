@@ -232,21 +232,3 @@ final class ProfileViewController: UIViewController {
         }
     }
 }
-
-
-
-
-
-
-
-// MARK: - Initializers
-
-
-
-
-
-// MARK: - IB Actions
-
-// MARK: - Public Methods
-
-// MARK: - Private Methods

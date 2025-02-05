@@ -144,9 +144,10 @@ private extension JobDetailsViewController {
             attributes: .destructive
         ) { [weak self] _ in
             guard let self else { return }
+            // MARK: - Не работает выход с экрана
             storageManager.logoutUser()
             logoutDelegate?.logOut()
-            dismiss(animated: true)
+            navigationController?.popToRootViewController(animated: true)
         }
         
         topMenu = UIMenu(title: "Options", children: [profile, logOut])
@@ -175,6 +176,15 @@ private extension JobDetailsViewController {
             Log.error("Ошибка при создании NSAttributedString из HTML: \(error)")
             return NSAttributedString()
         }
+    }
+}
+
+// TODO: - Не меняется тема при переходе назад на экран вакансии
+// MARK: - ThemeDelegate
+extension JobDetailsViewController: ThemeDelegate {
+    func reloadTheme(_ theme: Theme) {
+        self.theme = theme
+        updateCustomTheme(theme)
     }
 }
 
